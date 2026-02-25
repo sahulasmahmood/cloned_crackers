@@ -259,7 +259,7 @@ export default function FrequentlyBoughtTogether({
               <Button
                 onClick={handleAddAllToCart}
                 disabled={isAdding}
-                className="w-full bg-[#e63946] hover:bg-[#d32f3c] text-white py-2 px-3 rounded font-medium flex items-center justify-center gap-1.5 text-xs"
+                className="w-full bg-[#FFD700] hover:bg-[#FFCA28] text-white py-2 px-3 rounded font-medium flex items-center justify-center gap-1.5 text-xs"
               >
                 <IconShoppingCart size={16} />
                 {isAdding ? "Adding..." : `Add all ${selectedCount} to Cart`}

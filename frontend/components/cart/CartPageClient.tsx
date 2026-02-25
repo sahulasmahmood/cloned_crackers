@@ -160,7 +160,7 @@ export default function CartPageClient() {
       <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-gray-600 mb-4 sm:mb-8">
-          <Link href="/" className="hover:text-[#e63946]">
+          <Link href="/" className="hover:text-[#FFD700]">
             Home
           </Link>
           <span>/</span>
@@ -195,7 +195,7 @@ export default function CartPageClient() {
             </p>
             <Link
               href="/products"
-              className="inline-block bg-[#e63946] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-md hover:bg-[#c1121f] transition-colors text-sm sm:text-base"
+              className="inline-block bg-[#FFD700] text-gray-900 px-6 sm:px-8 py-2.5 sm:py-3 rounded-md hover:bg-[#FFCA28] transition-colors text-sm sm:text-base"
             >
               Browse Products
             </Link>
@@ -241,7 +241,7 @@ export default function CartPageClient() {
                                   {item.brand}
                                 </p>
                                 <Link href={generateCartItemUrl(item)}>
-                                  <h3 className="font-medium text-gray-900 text-sm line-clamp-2 hover:text-[#e63946]">
+                                  <h3 className="font-medium text-gray-900 text-sm line-clamp-2 hover:text-[#FFD700]">
                                     {item.displayName || item.variantName}
                                   </h3>
                                 </Link>
@@ -270,8 +270,8 @@ export default function CartPageClient() {
                                   )
                                 }
                                 className={`p-1 flex-shrink-0 transition-colors ${item.maxStock === 0
-                                  ? 'text-red-500 hover:text-red-700 opacity-100 bg-red-50 rounded'
-                                  : 'text-gray-400 hover:text-red-500'
+                                  ? 'text-red-500 hover:text-[#CC9900] opacity-100 bg-red-50 rounded'
+                                  : 'text-gray-400 hover:text-[#CC9900]'
                                   }`}
                               >
                                 <IconX size={18} />
@@ -312,7 +312,7 @@ export default function CartPageClient() {
                                 </button>
                               </div>
                               <div className="text-right">
-                                <span className="font-semibold text-[#e63946]">
+                                <span className="font-semibold text-[#FFD700]">
                                   {currencySymbol}
                                   {(
                                     item.variantSellingPrice * item.quantity
@@ -345,8 +345,8 @@ export default function CartPageClient() {
                               )
                             }
                             className={`transition-colors ${item.maxStock === 0
-                              ? 'text-red-500 hover:text-red-700 opacity-100 bg-red-50 rounded p-2'
-                              : 'text-gray-400 hover:text-red-500'
+                              ? 'text-red-500 hover:text-[#CC9900] opacity-100 bg-red-50 rounded p-2'
+                              : 'text-gray-400 hover:text-[#CC9900]'
                               }`}
                           >
                             <IconX size={20} />
@@ -365,7 +365,7 @@ export default function CartPageClient() {
                               {item.brand}
                             </p>
                             <Link href={generateCartItemUrl(item)}>
-                              <h3 className="font-semibold text-gray-900 hover:text-[#e63946] transition-colors">
+                              <h3 className="font-semibold text-gray-900 hover:text-[#FFD700] transition-colors">
                                 {item.displayName || item.variantName}
                               </h3>
                             </Link>
@@ -438,7 +438,7 @@ export default function CartPageClient() {
                               </button>
                             </div>
                             {item.maxStock === 0 && (
-                              <span className="text-xs text-red-600 font-medium">
+                              <span className="text-xs text-red-500 font-medium">
                                 Out of stock
                               </span>
                             )}
@@ -452,7 +452,7 @@ export default function CartPageClient() {
 
                         {/* Total */}
                         <div className="col-span-2 text-center">
-                          <span className="font-semibold text-[#e63946]">
+                          <span className="font-semibold text-[#FFD700]">
                             {currencySymbol}
                             {(item.variantSellingPrice * item.quantity).toFixed(
                               0
@@ -468,7 +468,7 @@ export default function CartPageClient() {
                 <div className="bg-gray-50 px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
                   <Link
                     href="/products"
-                    className="text-[#e63946] hover:underline font-medium text-sm sm:text-base"
+                    className="text-[#FFD700] hover:underline font-medium text-sm sm:text-base"
                   >
                     ← Continue Shopping
                   </Link>
@@ -546,7 +546,7 @@ export default function CartPageClient() {
                       <span className="text-base sm:text-lg font-semibold text-gray-900">
                         Total
                       </span>
-                      <span className="text-base sm:text-lg font-bold text-[#e63946]">
+                      <span className="text-base sm:text-lg font-bold text-[#FFD700]">
                         {currencySymbol}
                         {total.toFixed(2)}
                       </span>
@@ -586,7 +586,7 @@ export default function CartPageClient() {
                   ) : (
                     <Link
                       href="/checkout"
-                      className="w-full bg-[#e63946] text-white py-2.5 sm:py-3 rounded-md hover:bg-[#c1121f] transition-colors font-semibold text-sm sm:text-base shadow-sm flex items-center justify-center"
+                      className="w-full bg-[#FFD700] text-gray-900 py-2.5 sm:py-3 rounded-md hover:bg-[#FFCA28] transition-colors font-semibold text-sm sm:text-base shadow-sm flex items-center justify-center"
                     >
                       Request Quotation
                     </Link>

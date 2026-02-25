@@ -67,7 +67,7 @@ export default function PopularProducts({ initialProducts, categories }: Popular
           </div>
           <Link 
             href="/products" 
-            className="text-[#e63946] font-medium hover:underline text-xs sm:text-sm md:text-base"
+            className="text-[#FFD700] font-medium hover:underline text-xs sm:text-sm md:text-base"
           >
             View All →
           </Link>
@@ -79,7 +79,7 @@ export default function PopularProducts({ initialProducts, categories }: Popular
             onClick={() => handleCategoryChange('')}
             className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-colors active:scale-95 ${
               activeCategory === ''
-                ? 'bg-[#e63946] text-white'
+                ? 'bg-[#FFD700] text-gray-900'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >
@@ -91,7 +91,7 @@ export default function PopularProducts({ initialProducts, categories }: Popular
               onClick={() => handleCategoryChange(category.name)}
               className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-colors active:scale-95 ${
                 activeCategory === category.name
-                  ? 'bg-[#e63946] text-white'
+                  ? 'bg-[#FFD700] text-gray-900'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
@@ -130,7 +130,7 @@ export default function PopularProducts({ initialProducts, categories }: Popular
             {activeCategory && (
               <button
                 onClick={() => handleCategoryChange('')}
-                className="inline-flex items-center px-4 py-2 bg-[#e63946] text-white rounded-lg hover:bg-[#d62839] transition-colors text-sm sm:text-base"
+                className="inline-flex items-center px-4 py-2 bg-[#FFD700] text-gray-900 rounded-lg hover:bg-[#FFCA28] transition-colors text-sm sm:text-base font-semibold"
               >
                 View All Categories
               </button>

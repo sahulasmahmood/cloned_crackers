@@ -758,11 +758,11 @@ export default function CheckoutPageClient() {
       <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-4 sm:mb-8">
-          <Link href="/" className="hover:text-[#e63946]">
+          <Link href="/" className="hover:text-[#FFD700]">
             Home
           </Link>
           <span>/</span>
-          <Link href="/cart" className="hover:text-[#e63946]">
+          <Link href="/cart" className="hover:text-[#FFD700]">
             Enquiry List
           </Link>
           <span>/</span>
@@ -785,7 +785,7 @@ export default function CheckoutPageClient() {
                       className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center ${isCompleted
                         ? "bg-green-600"
                         : isActive
-                          ? "bg-[#e63946]"
+                          ? "bg-[#FFD700]"
                           : "bg-gray-300"
                         } text-white transition-colors`}
                     >
@@ -797,7 +797,7 @@ export default function CheckoutPageClient() {
                     </div>
                     <span
                       className={`mt-1.5 sm:mt-2 text-[10px] sm:text-sm font-medium text-center max-w-[70px] sm:max-w-none ${isActive
-                        ? "text-[#e63946]"
+                        ? "text-[#FFD700]"
                         : isCompleted
                           ? "text-green-600"
                           : "text-gray-500"
@@ -834,7 +834,7 @@ export default function CheckoutPageClient() {
                         setEditingAddress(null);
                         setShowAddressForm(true);
                       }}
-                      className="flex items-center gap-2 text-[#e63946] hover:text-[#c1121f] font-medium text-sm sm:text-base"
+                      className="flex items-center gap-2 text-[#FFD700] hover:text-[#FFCA28] font-medium text-sm sm:text-base"
                     >
                       <IconPlus size={18} className="sm:w-5 sm:h-5" />
                       Add New Address
@@ -872,7 +872,7 @@ export default function CheckoutPageClient() {
                     </p>
                     <button
                       onClick={() => setShowAddressForm(true)}
-                      className="text-[#e63946] hover:text-[#c1121f] font-medium"
+                      className="text-[#FFD700] hover:text-[#FFCA28] font-medium"
                     >
                       Add your first address
                     </button>
@@ -884,7 +884,7 @@ export default function CheckoutPageClient() {
                         key={address.id}
                         onClick={() => setSelectedAddress(address)}
                         className={`border-2 rounded-lg p-3 sm:p-4 cursor-pointer transition-all ${selectedAddress?.id === address.id
-                          ? "border-[#e63946] bg-red-50"
+                          ? "border-[#FFD700] bg-red-50"
                           : "border-gray-200 hover:border-gray-300"
                           }`}
                       >
@@ -936,7 +936,7 @@ export default function CheckoutPageClient() {
                                 setEditingAddress(address);
                                 setShowAddressForm(true);
                               }}
-                              className="p-1.5 sm:p-2 text-gray-600 hover:text-[#e63946]"
+                              className="p-1.5 sm:p-2 text-gray-600 hover:text-[#FFD700]"
                               title="Edit address"
                             >
                               <IconEdit size={16} className="sm:w-[18px] sm:h-[18px]" />
@@ -949,7 +949,7 @@ export default function CheckoutPageClient() {
                               e.stopPropagation();
                               handleSetDefault(address.id);
                             }}
-                            className="mt-3 text-sm text-[#e63946] hover:text-[#c1121f] font-medium"
+                            className="mt-3 text-sm text-[#FFD700] hover:text-[#FFCA28] font-medium"
                           >
                             Set as default
                           </button>
@@ -963,7 +963,7 @@ export default function CheckoutPageClient() {
                   <button
                     onClick={handleContinue}
                     disabled={!selectedAddress}
-                    className="w-full mt-6 bg-[#e63946] text-white py-3 rounded-md hover:bg-[#c1121f] transition-colors font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full mt-6 bg-[#FFD700] text-gray-900 py-3 rounded-md hover:bg-[#FFCA28] transition-colors font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     Continue to Review
                     <IconChevronRight size={20} />
@@ -986,7 +986,7 @@ export default function CheckoutPageClient() {
                         setCurrentStep("address");
                         updateUrlWithStep("address");
                       }}
-                      className="text-[#e63946] hover:text-[#c1121f] font-medium text-xs sm:text-sm"
+                      className="text-[#FFD700] hover:text-[#FFCA28] font-medium text-xs sm:text-sm"
                     >
                       Change
                     </button>
@@ -1046,7 +1046,7 @@ export default function CheckoutPageClient() {
                           </p>
                         </div>
                         <div className="text-right flex-shrink-0">
-                          <p className="font-semibold text-[#e63946] text-sm sm:text-base">
+                          <p className="font-semibold text-[#FFD700] text-sm sm:text-base">
                             {currencySymbol}
                             {(item.variantSellingPrice * item.quantity).toFixed(
                               0
@@ -1077,7 +1077,7 @@ export default function CheckoutPageClient() {
                   <button
                     onClick={handleSubmitEnquiry}
                     disabled={isPlacingOrder}
-                    className="flex-1 bg-[#e63946] text-white py-2.5 sm:py-3 rounded-md hover:bg-[#c1121f] transition-colors font-semibold flex items-center justify-center gap-1.5 sm:gap-2 text-sm sm:text-base disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    className="flex-1 bg-[#FFD700] text-gray-900 py-2.5 sm:py-3 rounded-md hover:bg-[#FFCA28] transition-colors font-semibold flex items-center justify-center gap-1.5 sm:gap-2 text-sm sm:text-base disabled:bg-gray-400 disabled:cursor-not-allowed"
                   >
                     {isPlacingOrder ? (
                       <>
@@ -1141,7 +1141,7 @@ export default function CheckoutPageClient() {
                     <span className="text-base sm:text-lg font-semibold text-gray-900">
                       Total
                     </span>
-                    <span className="text-base sm:text-lg font-bold text-[#e63946]">
+                    <span className="text-base sm:text-lg font-bold text-[#FFD700]">
                       {currencySymbol}
                       {total.toFixed(2)}
                     </span>
@@ -1170,7 +1170,7 @@ export default function CheckoutPageClient() {
                               </p>
                             </div>
                           </div>
-                          <IconChevronRight size={20} className="text-[#e63946]" />
+                          <IconChevronRight size={20} className="text-[#FFD700]" />
                         </div>
                       </div>
                     )}
@@ -1201,12 +1201,12 @@ export default function CheckoutPageClient() {
                           {availableCoupons.map((coupon) => (
                             <div
                               key={coupon.id}
-                              className="bg-white border-2 border-dashed border-gray-300 rounded-lg p-3 hover:border-[#e63946] hover:shadow-md transition-all"
+                              className="bg-white border-2 border-dashed border-gray-300 rounded-lg p-3 hover:border-[#FFD700] hover:shadow-md transition-all"
                             >
                               <div className="flex items-start justify-between gap-2">
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center gap-2 mb-1.5">
-                                    <div className="bg-[#e63946] text-white px-2 py-1 rounded text-xs font-bold">
+                                    <div className="bg-[#FFD700] text-gray-900 px-2 py-1 rounded text-xs font-bold">
                                       {coupon.code}
                                     </div>
                                     {coupon.isFirstTimeUserOnly && (
@@ -1238,7 +1238,7 @@ export default function CheckoutPageClient() {
                                   <button
                                     onClick={() => handleApplyCouponFromList(coupon.code)}
                                     disabled={isValidatingCoupon}
-                                    className="px-3 py-1 bg-[#e63946] text-white text-xs font-semibold rounded hover:bg-[#c1121f] transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                                    className="px-3 py-1 bg-[#FFD700] text-gray-900 text-xs font-semibold rounded hover:bg-[#FFCA28] transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
                                   >
                                     {isValidatingCoupon ? 'APPLYING...' : 'APPLY'}
                                   </button>
@@ -1264,19 +1264,19 @@ export default function CheckoutPageClient() {
                             setCouponError('');
                           }}
                           placeholder="Enter code"
-                          className="flex-1 px-2.5 sm:px-3 py-2 border border-gray-300 rounded-md text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#e63946] uppercase"
+                          className="flex-1 px-2.5 sm:px-3 py-2 border border-gray-300 rounded-md text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FFD700] uppercase"
                           disabled={isValidatingCoupon}
                         />
                         <button
                           onClick={() => handleApplyCoupon()}
                           disabled={isValidatingCoupon || !couponCode.trim()}
-                          className="px-3 sm:px-4 py-2 bg-[#e63946] text-white rounded-md text-xs sm:text-sm font-medium hover:bg-[#c1121f] disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+                          className="px-3 sm:px-4 py-2 bg-[#FFD700] text-gray-900 rounded-md text-xs sm:text-sm font-medium hover:bg-[#FFCA28] disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
                         >
                           {isValidatingCoupon ? '...' : 'Apply'}
                         </button>
                       </div>
                       {couponError && (
-                        <p className="text-[10px] sm:text-xs text-red-600">{couponError}</p>
+                        <p className="text-[10px] sm:text-xs text-red-500">{couponError}</p>
                       )}
                     </div>
                   </div>
@@ -1293,7 +1293,7 @@ export default function CheckoutPageClient() {
                       </div>
                       <button
                         onClick={handleRemoveCoupon}
-                        className="text-red-600 hover:text-red-700"
+                        className="text-red-500 hover:text-[#CC9900]"
                         title="Remove coupon"
                       >
                         <IconX size={18} />
@@ -1364,7 +1364,7 @@ export default function CheckoutPageClient() {
 
             <button
               onClick={() => setShowCODModal(false)}
-              className="w-full bg-[#e63946] text-white py-3 rounded-md hover:bg-[#c1121f] transition-colors font-semibold"
+              className="w-full bg-[#FFD700] text-gray-900 py-3 rounded-md hover:bg-[#FFCA28] transition-colors font-semibold"
             >
               Got it
             </button>
@@ -1485,7 +1485,7 @@ function AddressForm({ initialData, onCancel, onSave }: AddressFormProps) {
             type="text"
             value={formData.name}
             onChange={(e) => handleFieldChange("name", e.target.value)}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#e63946] ${errors.name ? "border-red-500" : "border-gray-300"
+            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFD700] ${errors.name ? "border-red-500" : "border-gray-300"
               }`}
             placeholder="Enter recipient name"
           />
@@ -1539,7 +1539,7 @@ function AddressForm({ initialData, onCancel, onSave }: AddressFormProps) {
           value={formData.addressLine1}
           onChange={(e) => handleFieldChange("addressLine1", e.target.value)}
           placeholder="House No., Building Name, Floor"
-          className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#e63946] ${errors.addressLine1 ? "border-red-500" : "border-gray-300"
+          className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFD700] ${errors.addressLine1 ? "border-red-500" : "border-gray-300"
             }`}
         />
         {errors.addressLine1 && (
@@ -1556,7 +1556,7 @@ function AddressForm({ initialData, onCancel, onSave }: AddressFormProps) {
           value={formData.addressLine2}
           onChange={(e) => handleFieldChange("addressLine2", e.target.value)}
           placeholder="Street, Road, Area, Colony"
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#e63946]"
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFD700]"
         />
       </div>
 
@@ -1569,7 +1569,7 @@ function AddressForm({ initialData, onCancel, onSave }: AddressFormProps) {
           value={formData.landmark}
           onChange={(e) => handleFieldChange("landmark", e.target.value)}
           placeholder="Nearby landmark (e.g., Near Metro Station)"
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#e63946]"
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFD700]"
         />
       </div>
 
@@ -1660,7 +1660,7 @@ function AddressForm({ initialData, onCancel, onSave }: AddressFormProps) {
                     addressType: e.target.value as "home" | "work" | "other",
                   })
                 }
-                className="text-[#e63946] focus:ring-[#e63946]"
+                className="text-[#FFD700] focus:ring-[#FFD700]"
               />
               <span className="text-sm text-gray-700 capitalize">{type}</span>
             </label>
@@ -1676,7 +1676,7 @@ function AddressForm({ initialData, onCancel, onSave }: AddressFormProps) {
           onChange={(e) =>
             setFormData({ ...formData, isDefault: e.target.checked })
           }
-          className="text-[#e63946] focus:ring-[#e63946] rounded"
+          className="text-[#FFD700] focus:ring-[#FFD700] rounded"
         />
         <label htmlFor="isDefault" className="text-sm text-gray-700">
           Set as default address
@@ -1695,7 +1695,7 @@ function AddressForm({ initialData, onCancel, onSave }: AddressFormProps) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="flex-1 bg-[#e63946] text-white py-2 rounded-md hover:bg-[#c1121f] transition-colors font-semibold disabled:bg-gray-400 flex items-center justify-center gap-2"
+          className="flex-1 bg-[#FFD700] text-gray-900 py-2 rounded-md hover:bg-[#FFCA28] transition-colors font-semibold disabled:bg-gray-400 flex items-center justify-center gap-2"
         >
           {isSubmitting ? (
             <>

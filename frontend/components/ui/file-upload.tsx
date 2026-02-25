@@ -620,7 +620,7 @@ export default function FileUpload({
                                             <button
                                                 onClick={resetState}
                                                 type="button"
-                                                className="flex items-center justify-center gap-2 rounded-lg bg-red-100 dark:bg-red-900/30 px-4 py-2.5 text-sm font-semibold text-red-700 dark:text-red-300 transition-all duration-200 hover:bg-red-200 dark:hover:bg-red-900/50"
+                                                className="flex items-center justify-center gap-2 rounded-lg bg-red-100 dark:bg-red-900/30 px-4 py-2.5 text-sm font-semibold text-red-700 dark:text-red-300 transition-all duration-200 hover:bg-[#FFCA28] dark:hover:bg-[#FFCA28]/50"
                                             >
                                                 Remove
                                             </button>

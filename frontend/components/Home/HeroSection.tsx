@@ -103,7 +103,7 @@ export default function HeroSection({ banners }: HeroSectionProps) {
                     onClick={() => goToSlide(index)}
                     className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
                       index === currentSlide 
-                        ? 'bg-[#e63946] w-6 sm:w-8 shadow-lg' 
+                        ? 'bg-[#FFD700] w-6 sm:w-8 shadow-lg' 
                         : 'bg-white/70 hover:bg-white w-1.5 sm:w-2'
                     }`}
                     aria-label={`Go to slide ${index + 1}`}

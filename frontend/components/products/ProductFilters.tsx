@@ -136,7 +136,7 @@ export default function ProductFilters({
             </span>
             <button
               onClick={onClearAll}
-              className="text-xs text-[#e63946] hover:underline"
+              className="text-xs text-[#FFD700] hover:underline"
             >
               Clear All
             </button>
@@ -144,11 +144,11 @@ export default function ProductFilters({
           <div className="flex flex-wrap gap-2">
             {/* Badge Chip */}
             {selectedBadge && selectedBadge !== 'all' && (
-              <span className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-[#e63946] text-xs rounded-full">
+              <span className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-[#FFD700] text-xs rounded-full">
                 {displayBadgeOptions.find(b => b.value === selectedBadge)?.label || selectedBadge}
                 <button
                   onClick={() => onBadgeSelect?.('all')}
-                  className="hover:bg-red-100 rounded-full p-0.5"
+                  className="hover:bg-[#FFCA28] rounded-full p-0.5"
                 >
                   <IconX size={12} />
                 </button>
@@ -157,22 +157,22 @@ export default function ProductFilters({
 
             {/* Category Chips */}
             {categoryMode === "select" && selectedCategory && (
-              <span className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-[#e63946] text-xs rounded-full">
+              <span className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-[#FFD700] text-xs rounded-full">
                 {selectedCategory.name}
                 <button
                   onClick={() => onSelectCategory?.(null)}
-                  className="hover:bg-red-100 rounded-full p-0.5"
+                  className="hover:bg-[#FFCA28] rounded-full p-0.5"
                 >
                   <IconX size={12} />
                 </button>
               </span>
             )}
             {categoryMode === "select" && selectedSubcategory && (
-              <span className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-[#e63946] text-xs rounded-full">
+              <span className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-[#FFD700] text-xs rounded-full">
                 {selectedSubcategory.name}
                 <button
                   onClick={() => onSelectSubcategory?.(null)}
-                  className="hover:bg-red-100 rounded-full p-0.5"
+                  className="hover:bg-[#FFCA28] rounded-full p-0.5"
                 >
                   <IconX size={12} />
                 </button>
@@ -183,12 +183,12 @@ export default function ProductFilters({
             {selectedBrands.map((brand) => (
               <span
                 key={brand}
-                className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-[#e63946] text-xs rounded-full"
+                className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-[#FFD700] text-xs rounded-full"
               >
                 {brand}
                 <button
                   onClick={() => onBrandToggle(brand)}
-                  className="hover:bg-red-100 rounded-full p-0.5"
+                  className="hover:bg-[#FFCA28] rounded-full p-0.5"
                 >
                   <IconX size={12} />
                 </button>
@@ -196,7 +196,7 @@ export default function ProductFilters({
             ))}
 
             {selectedPriceRange && (
-              <span className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-[#e63946] text-xs rounded-full">
+              <span className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-[#FFD700] text-xs rounded-full">
                 {priceRanges.find(
                   (r) =>
                     r.min === selectedPriceRange.min &&
@@ -211,7 +211,7 @@ export default function ProductFilters({
                     setCustomMinPrice("");
                     setCustomMaxPrice("");
                   }}
-                  className="hover:bg-red-100 rounded-full p-0.5"
+                  className="hover:bg-[#FFCA28] rounded-full p-0.5"
                 >
                   <IconX size={12} />
                 </button>
@@ -241,7 +241,7 @@ export default function ProductFilters({
                 onClick={() => onSelectCategory?.(null)}
                 className={`w-full text-left block px-3 py-2 rounded text-sm ${
                   !selectedCategory
-                    ? "bg-[#e63946] text-white"
+                    ? "bg-[#FFD700] text-gray-900"
                     : "hover:bg-gray-100 text-gray-700"
                 }`}
               >
@@ -256,9 +256,9 @@ export default function ProductFilters({
                     onClick={() => onSelectCategory?.(cat)}
                     className={`w-full text-left block px-3 py-2 rounded text-sm ${
                       selectedCategory?.id === cat.id && !selectedSubcategory
-                        ? "bg-[#e63946] text-white"
+                        ? "bg-[#FFD700] text-gray-900"
                         : selectedCategory?.id === cat.id
-                        ? "bg-red-50 text-[#e63946] font-medium"
+                        ? "bg-red-50 text-[#FFD700] font-medium"
                         : "hover:bg-gray-100 text-gray-700"
                     }`}
                   >
@@ -269,9 +269,9 @@ export default function ProductFilters({
                     href={generateCategoryUrl(cat)}
                     className={`block px-3 py-2 rounded text-sm ${
                       cat.id === selectedCategory?.id && !selectedSubcategory
-                        ? "bg-[#e63946] text-white"
+                        ? "bg-[#FFD700] text-gray-900"
                         : cat.id === selectedCategory?.id
-                        ? "bg-red-50 text-[#e63946] font-medium"
+                        ? "bg-red-50 text-[#FFD700] font-medium"
                         : "hover:bg-gray-100 text-gray-700"
                     }`}
                   >
@@ -291,7 +291,7 @@ export default function ProductFilters({
                             onClick={() => onSelectSubcategory?.(sub)}
                             className={`w-full text-left block px-2 py-1.5 rounded text-sm ${
                               selectedSubcategory?.id === sub.id
-                                ? "bg-[#e63946] text-white"
+                                ? "bg-[#FFD700] text-gray-900"
                                 : "hover:bg-gray-100 text-gray-600"
                             }`}
                           >
@@ -303,7 +303,7 @@ export default function ProductFilters({
                             href={generateSubcategoryUrl(cat, sub)}
                             className={`block px-2 py-1.5 rounded text-sm ${
                               selectedSubcategory?.id === sub.id
-                                ? "bg-[#e63946] text-white"
+                                ? "bg-[#FFD700] text-gray-900"
                                 : "hover:bg-gray-100 text-gray-600"
                             }`}
                           >
@@ -345,7 +345,7 @@ export default function ProductFilters({
                     name="badgeFilter"
                     checked={selectedBadge === badge.value}
                     onChange={() => onBadgeSelect(badge.value)}
-                    className="w-4 h-4 text-[#e63946] border-gray-300 focus:ring-[#e63946]"
+                    className="w-4 h-4 text-[#FFD700] border-gray-300 focus:ring-[#FFD700]"
                   />
                   <span className="text-sm text-gray-700">{badge.label}</span>
                 </label>
@@ -380,7 +380,7 @@ export default function ProductFilters({
                     type="checkbox"
                     checked={selectedBrands.includes(brand)}
                     onChange={() => onBrandToggle(brand)}
-                    className="w-4 h-4 text-[#e63946] border-gray-300 rounded focus:ring-[#e63946]"
+                    className="w-4 h-4 text-[#FFD700] border-gray-300 rounded focus:ring-[#FFD700]"
                   />
                   <span className="text-sm text-gray-700">{brand}</span>
                 </label>
@@ -423,7 +423,7 @@ export default function ProductFilters({
                   onChange={() =>
                     onPriceRangeSelect({ min: range.min, max: range.max })
                   }
-                  className="w-4 h-4 text-[#e63946] border-gray-300 focus:ring-[#e63946]"
+                  className="w-4 h-4 text-[#FFD700] border-gray-300 focus:ring-[#FFD700]"
                 />
                 <span className="text-sm text-gray-700">{range.label}</span>
               </label>
@@ -440,7 +440,7 @@ export default function ProductFilters({
                   onChange={(e) => {
                     setCustomMinPrice(e.target.value);
                   }}
-                  className="w-20 px-2 py-1.5 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-[#e63946]"
+                  className="w-20 px-2 py-1.5 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-[#FFD700]"
                 />
                 <span className="text-gray-400">-</span>
                 <input
@@ -450,11 +450,11 @@ export default function ProductFilters({
                   onChange={(e) => {
                     setCustomMaxPrice(e.target.value);
                   }}
-                  className="w-20 px-2 py-1.5 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-[#e63946]"
+                  className="w-20 px-2 py-1.5 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-[#FFD700]"
                 />
                 <button
                   onClick={onCustomPriceApply}
-                  className="px-3 py-1.5 bg-[#e63946] text-white text-sm rounded hover:bg-[#d62839]"
+                  className="px-3 py-1.5 bg-[#FFD700] text-gray-900 text-sm rounded hover:bg-[#FFCA28]"
                 >
                   Go
                 </button>

@@ -195,7 +195,7 @@ export default function DynamicProductCard({
           size={18}
           className={`sm:w-5 sm:h-5 transition-colors ${isWishlisted
               ? "fill-red-500 text-red-500"
-              : "text-gray-600 hover:text-red-500"
+              : "text-gray-600 hover:text-[#CC9900]"
             }`}
         />
       </button>
@@ -247,7 +247,7 @@ export default function DynamicProductCard({
 
         {/* Product Display Name (from variant) */}
         <Link href={productUrl} target="_blank" rel="noopener noreferrer">
-          <h3 className="text-sm sm:text-sm font-medium text-gray-800 mb-2 sm:mb-1.5 line-clamp-2 min-h-[40px] sm:min-h-[40px] hover:text-[#e63946] transition-colors">
+          <h3 className="text-sm sm:text-sm font-medium text-gray-800 mb-2 sm:mb-1.5 line-clamp-2 min-h-[40px] sm:min-h-[40px] hover:text-[#FFD700] transition-colors">
             {currentVariant?.displayName ||
               product.shortDescription ||
               currentVariant?.variantName}
@@ -329,7 +329,7 @@ export default function DynamicProductCard({
                       </div>
                     </div>
                     {selectedVariant === index && (
-                      <span className="text-[#e63946] flex-shrink-0">✓</span>
+                      <span className="text-[#FFD700] flex-shrink-0">✓</span>
                     )}
                   </button>
                 );
@@ -430,26 +430,26 @@ export default function DynamicProductCard({
             <button
               onClick={handleAddToCart}
               disabled={isOutOfStock}
-              className="flex-1 py-2.5 sm:py-2 px-4 sm:px-4 bg-[#e63946] text-white rounded font-medium hover:bg-[#d62839] transition-all duration-200 active:scale-95 text-sm sm:text-sm disabled:bg-gray-300 disabled:cursor-not-allowed"
+              className="flex-1 py-2.5 sm:py-2 px-4 sm:px-4 bg-[#FFD700] text-gray-900 rounded font-semibold hover:bg-[#FFCA28] transition-all duration-200 active:scale-95 text-sm sm:text-sm disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
             >
               {isOutOfStock ? "Out of Stock" : "Add to Enquiry"}
             </button>
           ) : (
             <div className="flex-1">
-              <div className="flex items-center justify-between border-2 border-[#e63946] rounded overflow-hidden">
+              <div className="flex items-center justify-between border-2 border-[#FFD700] rounded overflow-hidden">
                 <button
                   onClick={handleDecrement}
-                  className="px-3 sm:px-3 py-2 sm:py-2 text-[#e63946] hover:bg-[#e63946] hover:text-white transition-all duration-200 active:scale-95"
+                  className="px-3 sm:px-3 py-2 sm:py-2 text-[#CC9900] hover:bg-[#FFD700] hover:text-gray-900 transition-all duration-200 active:scale-95"
                 >
                   <IconMinus size={16} className="sm:w-4 sm:h-4" />
                 </button>
-                <span className="font-medium text-[#e63946] text-sm sm:text-sm">
+                <span className="font-semibold text-[#CC9900] text-sm sm:text-sm">
                   {quantity}
                 </span>
                 <button
                   onClick={handleIncrement}
                   disabled={quantity >= availableStock}
-                  className="px-3 sm:px-3 py-2 sm:py-2 text-[#e63946] hover:bg-[#e63946] hover:text-white transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-3 sm:px-3 py-2 sm:py-2 text-[#CC9900] hover:bg-[#FFD700] hover:text-gray-900 transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <IconPlus size={16} className="sm:w-4 sm:h-4" />
                 </button>

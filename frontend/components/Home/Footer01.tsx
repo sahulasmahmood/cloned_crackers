@@ -42,7 +42,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
   );
 
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-8 sm:pt-12 pb-4 sm:pb-6">
+    <footer className="bg-[#111111] text-gray-300 pt-8 sm:pt-12 pb-4 sm:pb-6">
       <div className="container mx-auto px-3 sm:px-4">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Brand */}
@@ -63,13 +63,13 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
                   }}
                 />
               ) : (
-                <span className="text-white font-bold text-2xl sm:text-3xl">
-                  {companySettings?.companyName || "LEATS"}
+                <span className="text-[#FFD700] font-bold text-2xl sm:text-3xl">
+                  {companySettings?.companyName || "Firecrackers"}
                 </span>
               )}
             </Link>
             <p className="text-xs sm:text-sm mb-3 sm:mb-4 text-gray-400">
-              {companySettings?.description || "Your one-stop shop for fresh groceries, daily essentials, and household items. We deliver quality products at the best prices, right to your doorstep."}
+              {companySettings?.description || "Your one-stop shop for premium firecrackers, sparklers & festive items. We deliver the finest crackers at the best prices, right to your doorstep. 🎇"}
             </p>
             {hasSocialMedia && (
               <div className="flex gap-2 sm:gap-3">
@@ -78,7 +78,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
                     href={companySettings.socialMedia.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#e63946] transition-colors active:scale-95"
+                    className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#FFD700] transition-colors active:scale-95"
                   >
                     <IconBrandFacebook
                       size={16}
@@ -91,7 +91,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
                     href={companySettings.socialMedia.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#e63946] transition-colors active:scale-95"
+                    className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#FFD700] transition-colors active:scale-95"
                   >
                     <IconBrandX
                       size={16}
@@ -104,7 +104,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
                     href={companySettings.socialMedia.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#e63946] transition-colors active:scale-95"
+                    className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#FFD700] transition-colors active:scale-95"
                   >
                     <IconBrandInstagram
                       size={16}
@@ -117,7 +117,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
                     href={companySettings.socialMedia.youtube}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#e63946] transition-colors active:scale-95"
+                    className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#FFD700] transition-colors active:scale-95"
                   >
                     <IconBrandYoutube
                       size={16}
@@ -130,7 +130,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
                     href={companySettings.socialMedia.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#e63946] transition-colors active:scale-95"
+                    className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#FFD700] transition-colors active:scale-95"
                   >
                     <IconBrandLinkedin
                       size={16}
@@ -151,7 +151,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
               <li>
                 <Link
                   href="/about"
-                  className="hover:text-[#e63946] transition-colors"
+                  className="hover:text-[#FFD700] transition-colors"
                 >
                   About Us
                 </Link>
@@ -159,7 +159,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
               <li>
                 <Link
                   href="/contact"
-                  className="hover:text-[#e63946] transition-colors"
+                  className="hover:text-[#FFD700] transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -167,7 +167,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
               <li>
                 <Link
                   href="/faq"
-                  className="hover:text-[#e63946] transition-colors"
+                  className="hover:text-[#FFD700] transition-colors"
                 >
                   FAQs
                 </Link>
@@ -176,7 +176,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
                 <li>
                   <Link
                     href="/my-orders"
-                    className="hover:text-[#e63946] transition-colors"
+                    className="hover:text-[#FFD700] transition-colors"
                   >
                     My Orders
                   </Link>
@@ -194,7 +194,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
               <li>
                 <Link
                   href="/shipping"
-                  className="hover:text-[#e63946] transition-colors"
+                  className="hover:text-[#FFD700] transition-colors"
                 >
                   Shipping Policy
                 </Link>
@@ -202,7 +202,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
               <li>
                 <Link
                   href="/returns"
-                  className="hover:text-[#e63946] transition-colors"
+                  className="hover:text-[#FFD700] transition-colors"
                 >
                   Returns & Refunds
                 </Link>
@@ -210,7 +210,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
               <li>
                 <Link
                   href="/privacy"
-                  className="hover:text-[#e63946] transition-colors"
+                  className="hover:text-[#FFD700] transition-colors"
                 >
                   Privacy Policy
                 </Link>
@@ -218,7 +218,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
               <li>
                 <Link
                   href="/terms"
-                  className="hover:text-[#e63946] transition-colors"
+                  className="hover:text-[#FFD700] transition-colors"
                 >
                   Terms & Conditions
                 </Link>
@@ -248,7 +248,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
                   <span>📞</span>
                   <a 
                     href={`tel:${companySettings.phone}`}
-                    className="hover:text-[#e63946] transition-colors hover:underline"
+                    className="hover:text-[#FFD700] transition-colors hover:underline"
                   >
                     {companySettings.phone}
                   </a>
@@ -259,7 +259,7 @@ export default function Footer01({ initialWebSettings, initialCompanySettings }:
                   <span>✉️</span>
                   <a 
                     href={`mailto:${companySettings.email}`}
-                    className="hover:text-[#e63946] transition-colors hover:underline"
+                    className="hover:text-[#FFD700] transition-colors hover:underline"
                   >
                     {companySettings.email}
                   </a>

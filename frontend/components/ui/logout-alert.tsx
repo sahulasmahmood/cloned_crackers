@@ -72,7 +72,7 @@ export function LogoutAlert({
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <LogOut className="h-5 w-5 text-red-600" />
+            <LogOut className="h-5 w-5 text-red-500" />
             Confirm Logout
           </DialogTitle>
         </DialogHeader>
@@ -114,7 +114,7 @@ export function LogoutAlert({
               handleLogout();
             }}
             disabled={isLoggingOut}
-            className="bg-red-600 cursor-pointer hover:bg-red-700 focus:ring-red-600"
+            className="bg-red-600 cursor-pointer hover:bg-[#FFCA28] focus:ring-red-600"
           >
             {isLoggingOut ? (
               <>

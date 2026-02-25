@@ -19,7 +19,7 @@ export default function CategoriesPageClient({ initialCategories }: CategoriesPa
       <div className="bg-white border-b">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center gap-2 text-sm text-gray-600">
-            <Link href="/" className="text-[#e63946] hover:underline">Home</Link>
+            <Link href="/" className="text-[#FFD700] hover:underline">Home</Link>
             <span>/</span>
             <span className="text-gray-900">All Categories</span>
           </div>

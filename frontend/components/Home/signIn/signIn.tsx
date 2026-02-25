@@ -168,7 +168,7 @@ export const SignIn = () => {
           <div className="text-center mb-4 sm:mb-6">
             <Image 
               src="/logo.jpeg" 
-              alt="LEATS" 
+              alt="Firecrackers" 
               width={100} 
               height={40} 
               sizes="100px"
@@ -232,7 +232,7 @@ export const SignIn = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E63946] text-sm"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-sm"
                 placeholder="Enter email or phone"
                 disabled={isLoading || isGoogleLoading}
                 required
@@ -252,7 +252,7 @@ export const SignIn = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E63946] text-sm"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-sm"
                   placeholder="Enter password"
                   disabled={isLoading || isGoogleLoading}
                   required
@@ -281,11 +281,11 @@ export const SignIn = () => {
                   type="checkbox" 
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="rounded text-[#E63946] focus:ring-[#E63946]" 
+                  className="rounded text-[#FFD700] focus:ring-[#FFD700]" 
                 />
                 <span className="text-gray-600">Remember me</span>
               </label>
-              <Link href="/forgot-password" className="text-[#E63946] hover:underline">
+              <Link href="/forgot-password" className="text-[#FFD700] hover:underline">
                 Forgot Password?
               </Link>
             </div>
@@ -293,11 +293,11 @@ export const SignIn = () => {
             <button 
               type="submit" 
               disabled={isLoading || isGoogleLoading}
-              className="w-full bg-[#E63946] text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-[#C62E39] text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-full bg-[#FFD700] text-gray-900 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-[#FFCA28] text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isLoading ? (
                 <span className="flex items-center justify-center gap-2">
-                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-900 border-t-transparent" />
                   Signing in...
                 </span>
               ) : (
@@ -309,8 +309,8 @@ export const SignIn = () => {
           {/* Create Account Link */}
           <div className="mt-4 sm:mt-6 text-center">
             <p className="text-gray-600 text-xs sm:text-sm">
-              New to LEATS?{" "}
-              <Link href="/signup" className="text-[#E63946] font-medium hover:underline">
+              New here?{" "}
+              <Link href="/signup" className="text-[#FFD700] font-medium hover:underline">
                 Create Account
               </Link>
             </p>

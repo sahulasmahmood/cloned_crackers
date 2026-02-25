@@ -15,7 +15,7 @@ export default function Footer02({ initialCompanySettings }: Footer02Props) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="bg-gray-950 text-gray-400 py-3 sm:py-4">
+    <div className="bg-[#0A0A0A] text-gray-400 py-3 sm:py-4">
       <div className="container mx-auto px-3 sm:px-4">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
           <p className="text-xs sm:text-sm text-center sm:text-left">
@@ -24,7 +24,7 @@ export default function Footer02({ initialCompanySettings }: Footer02Props) {
               href="https://mntfuture.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#e63946] hover:underline font-medium"
+              className="text-[#FFD700] hover:underline font-medium"
             >
               MNT
             </a>

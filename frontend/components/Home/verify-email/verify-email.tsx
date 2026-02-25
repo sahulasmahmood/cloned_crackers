@@ -125,7 +125,7 @@ function VerifyEmailContent() {
 
           {status === "error" && (
             <div className="text-center space-y-4">
-              <div className="text-red-600 text-4xl">✗</div>
+              <div className="text-red-500 text-4xl">✗</div>
               <div className="space-y-2">
                 <Button asChild variant="outline" className="w-full">
                   <Link href="/signin">Back to Sign In</Link>

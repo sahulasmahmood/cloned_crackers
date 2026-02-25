@@ -206,7 +206,7 @@ export const SignUp = () => {
           <div className="text-center mb-4 sm:mb-6">
             <Image 
               src="/logo.jpeg" 
-              alt="LEATS" 
+              alt="Firecrackers" 
               width={100} 
               height={40} 
               sizes="100px"
@@ -215,7 +215,7 @@ export const SignUp = () => {
               quality={90}
             />
             <h1 className="text-lg sm:text-xl font-bold text-gray-800">Create Account</h1>
-            <p className="text-gray-500 text-xs sm:text-sm">Join LEATS for fresh groceries</p>
+            <p className="text-gray-500 text-xs sm:text-sm">Shop premium firecrackers & more</p>
           </div>
 
           {/* Google Sign Up Button */}
@@ -270,7 +270,7 @@ export const SignUp = () => {
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleInputChange}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E63946] text-sm"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-sm"
                 placeholder="Enter your name"
                 disabled={isLoading || isGoogleLoading}
                 required
@@ -289,7 +289,7 @@ export const SignUp = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E63946] text-sm"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-sm"
                 placeholder="Enter email"
                 disabled={isLoading || isGoogleLoading}
                 required
@@ -338,7 +338,7 @@ export const SignUp = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E63946] text-sm"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-sm"
                   placeholder="Create password"
                   disabled={isLoading || isGoogleLoading}
                   required
@@ -374,7 +374,7 @@ export const SignUp = () => {
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E63946] text-sm"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-sm"
                   placeholder="Confirm password"
                   disabled={isLoading || isGoogleLoading}
                   required
@@ -400,11 +400,11 @@ export const SignUp = () => {
             <button 
               type="submit" 
               disabled={isLoading || isGoogleLoading}
-              className="w-full bg-[#E63946] text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-[#C62E39] text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-full bg-[#FFD700] text-gray-900 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-[#FFCA28] text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isLoading ? (
                 <span className="flex items-center justify-center gap-2">
-                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-900 border-t-transparent" />
                   Creating account...
                 </span>
               ) : (
@@ -416,11 +416,11 @@ export const SignUp = () => {
           {/* Terms and Privacy */}
           <p className="text-xs text-center text-gray-500 mt-4">
             By creating an account, you agree to our{" "}
-            <Link href="/terms" className="text-[#E63946] hover:underline">
+            <Link href="/terms" className="text-[#FFD700] hover:underline">
               Terms of Service
             </Link>{" "}
             and{" "}
-            <Link href="/privacy" className="text-[#E63946] hover:underline">
+            <Link href="/privacy" className="text-[#FFD700] hover:underline">
               Privacy Policy
             </Link>
           </p>
@@ -429,7 +429,7 @@ export const SignUp = () => {
           <div className="mt-4 sm:mt-6 text-center">
             <p className="text-gray-600 text-xs sm:text-sm">
               Already have an account?{" "}
-              <Link href="/signin" className="text-[#E63946] font-medium hover:underline">
+              <Link href="/signin" className="text-[#FFD700] font-medium hover:underline">
                 Sign In
               </Link>
             </p>

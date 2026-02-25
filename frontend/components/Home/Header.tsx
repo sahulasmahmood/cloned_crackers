@@ -196,10 +196,10 @@ export default function Header({ initialCategories, initialWebSettings, initialP
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Top Header Bar - Same Red as Category Bar */}
-      <div className="bg-[#e63946]">
+      {/* Top Header Bar - Dark Premium */}
+      <div className="bg-[#111111]">
         <div className="container mx-auto px-3 sm:px-4">
-          <div className="flex items-center justify-center py-1.5 sm:py-2 text-white text-[10px] sm:text-xs md:text-sm relative">
+          <div className="flex items-center justify-center py-1.5 sm:py-2 text-gray-200 text-[10px] sm:text-xs md:text-sm relative">
             {/* Left Links - Hidden on mobile */}
             <div className="hidden sm:flex items-center gap-4 sm:gap-6 absolute left-3 sm:left-4">
               {/* <Link href="/about" className="hover:underline hidden md:block">
@@ -219,12 +219,12 @@ export default function Header({ initialCategories, initialWebSettings, initialP
               {isClient && promotionalOffers.length > 0 ? (
                 <p
                   key={currentOfferIndex}
-                  className="font-medium text-white animate-fade-in"
+                  className="font-medium text-[#FFD700] animate-fade-in"
                 >
                   {formatOfferText(promotionalOffers[currentOfferIndex])}
                 </p>
               ) : (
-                <p className="font-medium text-white">🎊 Welcome! Explore our latest products and deals</p>
+                <p className="font-medium text-[#FFD700]">✨ Welcome! Explore our premium firecrackers & festive offers 🎇</p>
               )}
             </div>
           </div>
@@ -261,8 +261,8 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                 />
               ) : (
                 <div className="h-10 sm:h-12 lg:h-14 flex items-center">
-                  <span className="text-[#e63946] font-bold text-xl sm:text-2xl lg:text-3xl">
-                    LEATS
+                  <span className="text-[#111111] font-bold text-xl sm:text-2xl lg:text-3xl">
+                    Firecrackers
                   </span>
                 </div>
               )}
@@ -274,7 +274,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
               onMouseEnter={() => setShowMegaMenu(true)}
               onMouseLeave={() => setShowMegaMenu(false)}
             >
-              <button className="bg-[#e63946] text-white px-4 py-2.5 rounded-md flex items-center gap-2 hover:bg-[#d32f3c] focus:outline-none font-medium transition-colors">
+              <button className="bg-[#111111] text-[#FFD700] px-4 py-2.5 rounded-md flex items-center gap-2 hover:bg-[#222222] focus:outline-none font-semibold transition-colors">
                 <IconMenu2 size={20} />
                 Shop by Category
                 <IconChevronDown
@@ -293,7 +293,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                       <div
                         key={category.id}
                         className={`flex items-center justify-between px-4 py-3 cursor-pointer transition-colors ${activeCategory.id === category.id
-                          ? "bg-white text-[#e63946] border-l-4 border-[#e63946]"
+                          ? "bg-white text-[#FFD700] border-l-4 border-[#FFD700]"
                           : "hover:bg-white text-gray-700"
                           }`}
                         onMouseEnter={() => setActiveCategory(category)}
@@ -313,7 +313,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                     <div className="mb-4">
                       <Link
                         href={generateCategoryUrl(activeCategory)}
-                        className="text-lg font-bold text-gray-800 hover:text-[#e63946] transition-colors"
+                        className="text-lg font-bold text-gray-800 hover:text-[#FFD700] transition-colors"
                       >
                         {activeCategory.name}
                       </Link>
@@ -327,7 +327,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                             <Link
                               key={sub.id}
                               href={`${generateCategoryUrl(activeCategory)}?sub=${sub.id}`}
-                              className="text-sm text-gray-600 hover:text-[#e63946] hover:underline transition-colors py-1"
+                              className="text-sm text-gray-600 hover:text-[#FFD700] hover:underline transition-colors py-1"
                             >
                               {sub.name}
                             </Link>
@@ -337,7 +337,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                         <div className="mt-6 pt-4 border-t border-gray-200">
                           <Link
                             href={generateCategoryUrl(activeCategory)}
-                            className="inline-flex items-center gap-2 text-[#e63946] font-medium text-sm hover:underline"
+                            className="inline-flex items-center gap-2 text-[#FFD700] font-medium text-sm hover:underline"
                           >
                             View All {activeCategory.name}
                             <IconChevronRight size={16} />
@@ -357,7 +357,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
             {/* Search Bar - Desktop */}
             <div className="hidden md:flex flex-1 max-w-xl lg:max-w-2xl relative" ref={searchRef}>
               <form onSubmit={handleSearchSubmit} className="w-full">
-                <div className="flex items-center bg-white border border-gray-300 rounded-md overflow-hidden w-full focus-within:border-[#e63946] focus-within:ring-1 focus-within:ring-[#e63946] transition-all">
+                <div className="flex items-center bg-white border border-gray-300 rounded-md overflow-hidden w-full focus-within:border-[#FFD700] focus-within:ring-1 focus-within:ring-[#FFD700] transition-all">
                   <div className="px-3">
                     <IconSearch size={20} className="text-gray-400" />
                   </div>
@@ -386,7 +386,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                   )}
                   <button
                     type="submit"
-                    className="bg-[#e63946] text-white px-4 py-2.5 hover:bg-[#d32f3c] transition-colors"
+                    className="bg-[#FFD700] text-gray-900 px-4 py-2.5 hover:bg-[#FFCA28] transition-colors font-semibold"
                   >
                     Search
                   </button>
@@ -398,7 +398,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                 <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl z-50 max-h-[500px] overflow-y-auto">
                   {searchLoading ? (
                     <div className="p-8 text-center">
-                      <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#e63946]"></div>
+                      <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#FFD700]"></div>
                       <p className="mt-2 text-sm text-gray-500">Searching...</p>
                     </div>
                   ) : searchResults.length > 0 ? (
@@ -471,7 +471,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                         <div className="p-3 border-t bg-gray-50">
                           <button
                             onClick={() => handleSearchSubmit()}
-                            className="w-full text-center text-sm text-[#e63946] font-medium hover:underline"
+                            className="w-full text-center text-sm text-[#FFD700] font-medium hover:underline"
                           >
                             View all results for &ldquo;{searchQuery}&rdquo;
                           </button>
@@ -500,9 +500,9 @@ export default function Header({ initialCategories, initialWebSettings, initialP
             {isClient && isAuthenticated && user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="hidden md:flex items-center gap-1 lg:gap-2 text-gray-700 hover:text-[#e63946] focus:outline-none">
+                  <button className="hidden md:flex items-center gap-1 lg:gap-2 text-gray-700 hover:text-[#FFD700] focus:outline-none">
                     {user.image && user.image.trim() !== "" ? (
-                      <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full overflow-hidden border-2 border-[#e63946] bg-gray-100">
+                      <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full overflow-hidden border-2 border-[#FFD700] bg-gray-100">
                         <Image
                           src={user.image}
                           alt={user.name || "User"}
@@ -518,7 +518,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                         />
                       </div>
                     ) : (
-                      <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-[#e63946] text-white flex items-center justify-center font-semibold text-xs lg:text-sm">
+                      <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-[#FFD700] text-gray-900 flex items-center justify-center font-semibold text-xs lg:text-sm">
                         {getUserInitials()}
                       </div>
                     )}
@@ -589,7 +589,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
             ) : (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="hidden md:flex items-center gap-1 lg:gap-2 text-gray-700 hover:text-[#e63946] focus:outline-none">
+                  <button className="hidden md:flex items-center gap-1 lg:gap-2 text-gray-700 hover:text-[#FFD700] focus:outline-none">
                     <IconUser size={22} />
                     <div className="hidden lg:block text-sm text-left">
                       <p className="text-xs text-gray-500">Sign In</p>
@@ -616,12 +616,12 @@ export default function Header({ initialCategories, initialWebSettings, initialP
             {/* Wishlist - Hidden on mobile (available in mobile menu) */}
             <Link
               href="/wishlist"
-              className="hidden md:flex items-center gap-1 lg:gap-2 text-gray-700 hover:text-[#e63946] transition-colors"
+              className="hidden md:flex items-center gap-1 lg:gap-2 text-gray-700 hover:text-[#FFD700] transition-colors"
             >
               <div className="relative">
                 <IconHeart size={22} />
                 {wishlistCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-[#e63946] text-white text-[10px] rounded-full w-5 h-5 flex items-center justify-center font-medium">
+                  <span className="absolute -top-2 -right-2 bg-[#FFD700] text-gray-900 text-[10px] rounded-full w-5 h-5 flex items-center justify-center font-bold">
                     {wishlistCount}
                   </span>
                 )}
@@ -631,12 +631,12 @@ export default function Header({ initialCategories, initialWebSettings, initialP
             {/* Cart - Always visible */}
             <Link
               href="/cart"
-              className="flex items-center gap-1 lg:gap-2 text-gray-700 hover:text-[#e63946] transition-colors flex-shrink-0"
+              className="flex items-center gap-1 lg:gap-2 text-gray-700 hover:text-[#FFD700] transition-colors flex-shrink-0"
             >
               <div className="relative">
                 <IconShoppingCart size={24} />
                 {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-[#e63946] text-white text-[10px] rounded-full w-5 h-5 flex items-center justify-center font-medium">
+                  <span className="absolute -top-2 -right-2 bg-[#FFD700] text-gray-900 text-[10px] rounded-full w-5 h-5 flex items-center justify-center font-bold">
                     {totalItems}
                   </span>
                 )}
@@ -655,7 +655,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
           {mobileSearchOpen && (
             <div className="md:hidden mt-3 relative" ref={searchRef}>
               <form onSubmit={handleSearchSubmit}>
-                <div className="flex items-center bg-white border border-gray-300 rounded-md overflow-hidden focus-within:border-[#e63946] focus-within:ring-1 focus-within:ring-[#e63946] transition-all">
+                <div className="flex items-center bg-white border border-gray-300 rounded-md overflow-hidden focus-within:border-[#FFD700] focus-within:ring-1 focus-within:ring-[#FFD700] transition-all">
                   <div className="px-3">
                     <IconSearch size={20} className="text-gray-400" />
                   </div>
@@ -691,7 +691,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                 <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl z-50 max-h-[400px] overflow-y-auto">
                   {searchLoading ? (
                     <div className="p-6 text-center">
-                      <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-[#e63946]"></div>
+                      <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-[#FFD700]"></div>
                       <p className="mt-2 text-xs text-gray-500">Searching...</p>
                     </div>
                   ) : searchResults.length > 0 ? (
@@ -759,7 +759,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                         <div className="p-2 border-t bg-gray-50">
                           <button
                             onClick={() => handleSearchSubmit()}
-                            className="w-full text-center text-xs text-[#e63946] font-medium hover:underline"
+                            className="w-full text-center text-xs text-[#FFD700] font-medium hover:underline"
                           >
                             View all results
                           </button>
@@ -779,16 +779,16 @@ export default function Header({ initialCategories, initialWebSettings, initialP
         </div>
       </div>
 
-      {/* Category Navigation Bar - Desktop - RED BACKGROUND with WHITE TEXT */}
+      {/* Category Navigation Bar - Desktop - Dark BG with Golden Text */}
       {categories.length > 0 && (
-        <div className="hidden lg:block bg-[#e63946]">
+        <div className="hidden lg:block bg-[#111111]">
           <div className="container mx-auto px-4">
             <div className="flex items-center gap-6 lg:gap-8 py-2 overflow-x-auto scrollbar-hide">
               {categories.map((category) => (
                 <Link
                   key={category.id}
                   href={generateCategoryUrl(category)}
-                  className="flex items-center gap-2 text-white hover:text-yellow-200 whitespace-nowrap text-sm font-medium py-1 transition-colors"
+                  className="flex items-center gap-2 text-gray-300 hover:text-[#FFD700] whitespace-nowrap text-sm font-medium py-1 transition-colors"
                 >
                   <span>{category.name}</span>
                 </Link>
@@ -809,7 +809,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
             onClick={(e) => e.stopPropagation()}
           >
             {/* Mobile Menu Header */}
-            <div className="bg-[#e63946] p-3 sm:p-4 flex items-center justify-between">
+            <div className="bg-[#111111] p-3 sm:p-4 flex items-center justify-between">
               <Link
                 href="/"
                 className="flex items-center"
@@ -831,15 +831,15 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                   />
                 ) : (
                   <div className="h-10 sm:h-12 flex items-center bg-white rounded-md px-3">
-                    <span className="text-[#e63946] font-bold text-lg sm:text-xl">
-                      LEATS
+                    <span className="text-[#FFD700] font-bold text-lg sm:text-xl bg-[#111111] px-2 py-1 rounded">
+                      Firecrackers
                     </span>
                   </div>
                 )}
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-white p-1"
+                className="text-[#FFD700] p-1"
               >
                 <IconX size={24} />
               </button>
@@ -852,7 +852,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                   {/* User Profile Section */}
                   <div className="flex items-center gap-3 py-2 sm:py-3 mb-2">
                     {user.image && user.image.trim() !== "" ? (
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#e63946] bg-gray-100">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#FFD700] bg-gray-100">
                         <Image
                           src={user.image}
                           alt={user.name || "User"}
@@ -868,7 +868,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                         />
                       </div>
                     ) : (
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#e63946] text-white flex items-center justify-center font-semibold text-base sm:text-lg">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#FFD700] text-gray-900 flex items-center justify-center font-semibold text-base sm:text-lg">
                         {getUserInitials()}
                       </div>
                     )}
@@ -893,7 +893,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                           setMobileMenuOpen(false);
                           handleLogout();
                         }}
-                        className="w-full flex items-center gap-3 py-2.5 sm:py-3 text-red-600 hover:bg-red-50 rounded-lg px-2 -mx-2 text-sm sm:text-base"
+                        className="w-full flex items-center gap-3 py-2.5 sm:py-3 text-red-500 hover:bg-[#FFCA28] rounded-lg px-2 -mx-2 text-sm sm:text-base"
                       >
                         <IconLogout size={20} />
                         <span>Logout</span>
@@ -925,7 +925,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                         <div className="relative">
                           <IconHeart size={20} />
                           {wishlistCount > 0 && (
-                            <span className="absolute -top-1 -right-1 bg-[#e63946] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-medium">
+                            <span className="absolute -top-1 -right-1 bg-[#FFD700] text-gray-900 text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">
                               {wishlistCount}
                             </span>
                           )}
@@ -937,7 +937,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                           setMobileMenuOpen(false);
                           handleLogout();
                         }}
-                        className="w-full flex items-center gap-3 py-2.5 sm:py-3 text-red-600 hover:bg-red-50 rounded-lg px-2 -mx-2 text-sm sm:text-base"
+                        className="w-full flex items-center gap-3 py-2.5 sm:py-3 text-red-500 hover:bg-[#FFCA28] rounded-lg px-2 -mx-2 text-sm sm:text-base"
                       >
                         <IconLogout size={20} />
                         <span>Logout</span>
@@ -963,7 +963,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                     <div className="relative">
                       <IconHeart size={20} />
                       {wishlistCount > 0 && (
-                        <span className="absolute -top-1 -right-1 bg-[#e63946] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-medium">
+                        <span className="absolute -top-1 -right-1 bg-[#FFD700] text-gray-900 text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">
                           {wishlistCount}
                         </span>
                       )}
@@ -985,7 +985,7 @@ export default function Header({ initialCategories, initialWebSettings, initialP
                     <Link
                       key={category.id}
                       href={generateCategoryUrl(category)}
-                      className="flex items-center gap-3 py-2.5 sm:py-3 text-gray-700 hover:text-[#e63946] hover:bg-gray-50 rounded-lg px-2 -mx-2 text-sm sm:text-base"
+                      className="flex items-center gap-3 py-2.5 sm:py-3 text-gray-700 hover:text-[#FFD700] hover:bg-gray-50 rounded-lg px-2 -mx-2 text-sm sm:text-base"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <span className="font-medium">{category.name}</span>
@@ -1000,28 +1000,28 @@ export default function Header({ initialCategories, initialWebSettings, initialP
               <div className="grid grid-cols-2 gap-1.5 sm:gap-2 text-xs sm:text-sm">
                 <Link
                   href="/about"
-                  className="py-1.5 sm:py-2 text-gray-600 hover:text-[#e63946]"
+                  className="py-1.5 sm:py-2 text-gray-600 hover:text-[#FFD700]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   About Us
                 </Link>
                 <Link
                   href="/contact"
-                  className="py-1.5 sm:py-2 text-gray-600 hover:text-[#e63946]"
+                  className="py-1.5 sm:py-2 text-gray-600 hover:text-[#FFD700]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact
                 </Link>
                 <Link
                   href="/faq"
-                  className="py-1.5 sm:py-2 text-gray-600 hover:text-[#e63946]"
+                  className="py-1.5 sm:py-2 text-gray-600 hover:text-[#FFD700]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   FAQs
                 </Link>
                 <Link
                   href="/shipping"
-                  className="py-1.5 sm:py-2 text-gray-600 hover:text-[#e63946]"
+                  className="py-1.5 sm:py-2 text-gray-600 hover:text-[#FFD700]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Shipping
