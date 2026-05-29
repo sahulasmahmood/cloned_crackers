@@ -4,6 +4,7 @@ const {
   getAllOrders,
   getOrderById,
   updateOrderStatus,
+  updateOrderPaymentStatus,
   getOrderStats,
   downloadOrderInvoice,
 } = require('../../controllers/order/adminOrderController');
@@ -22,5 +23,8 @@ router.get('/:id', getOrderById);
 
 // Update order status
 router.patch('/:id/status', updateOrderStatus);
+
+// Update order payment status
+router.patch('/:id/payment-status', updateOrderPaymentStatus);
 
 module.exports = router;

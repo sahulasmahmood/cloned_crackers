@@ -371,6 +371,55 @@ const updateOrderStatus = async (req, res) => {
 };
 
 /**
+ * Update order payment status
+ * PATCH /api/online/admin/orders/:id/payment-status
+ */
+const updateOrderPaymentStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { paymentStatus } = req.body;
+
+    const validStatuses = ['pending', 'completed', 'failed', 'refunded'];
+    if (!validStatuses.includes(paymentStatus)) {
+      return res.status(400).json({
+        success: false,
+        error: `Invalid payment status. Must be one of: ${validStatuses.join(', ')}`
+      });
+    }
+
+    const order = await prisma.onlineOrder.findUnique({
+      where: { id }
+    });
+
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        error: 'Order not found'
+      });
+    }
+
+    // Update order
+    const updatedOrder = await prisma.onlineOrder.update({
+      where: { id },
+      data: { paymentStatus }
+    });
+
+    res.json({
+      success: true,
+      data: updatedOrder,
+      message: `Payment status updated to ${paymentStatus}`
+    });
+  } catch (error) {
+    console.error('Error updating order payment status:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to update order payment status',
+      message: error.message
+    });
+  }
+};
+
+/**
  * Get order statistics
  * GET /api/online/admin/orders/stats
  */
@@ -528,6 +577,7 @@ module.exports = {
   getAllOrders,
   getOrderById,
   updateOrderStatus,
+  updateOrderPaymentStatus,
   getOrderStats,
   downloadOrderInvoice,
 };

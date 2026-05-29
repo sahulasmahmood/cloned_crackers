@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { PhoneInput } from "@/components/ui/phone-input";
 import { useAuthContext } from "@/components/providers/auth-provider";
 import { requestNotificationPermission } from "@/lib/firebase";
+import { getWebSettings } from "@/services/online-services/webSettingsService";
 
 export const SignUp = () => {
   const router = useRouter();
@@ -38,6 +39,17 @@ export const SignUp = () => {
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [logoUrl, setLogoUrl] = useState<string>("");
+
+  useEffect(() => {
+    getWebSettings()
+      .then((res) => {
+        if (res.success && res.data.logoUrl) {
+          setLogoUrl(res.data.logoUrl);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -204,16 +216,18 @@ export const SignUp = () => {
         <div className="bg-white rounded-lg p-4 sm:p-8 shadow-sm">
           {/* Logo and Title */}
           <div className="text-center mb-4 sm:mb-6">
-            <Image 
-              src="/logo.jpeg" 
-              alt="Firecrackers" 
-              width={100} 
-              height={40} 
-              sizes="100px"
-              className="mx-auto mb-3 sm:mb-4 w-16 sm:w-[100px]"
-              priority
-              quality={90}
-            />
+            {logoUrl && (
+              <Image
+                src={logoUrl}
+                alt="Logo"
+                width={100}
+                height={40}
+                sizes="100px"
+                className="mx-auto mb-3 sm:mb-4 w-16 sm:w-[100px] h-auto object-contain"
+                priority
+                quality={90}
+              />
+            )}
             <h1 className="text-lg sm:text-xl font-bold text-gray-800">Create Account</h1>
             <p className="text-gray-500 text-xs sm:text-sm">Shop premium firecrackers & more</p>
           </div>

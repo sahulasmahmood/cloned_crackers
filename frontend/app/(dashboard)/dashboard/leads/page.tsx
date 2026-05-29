@@ -1,10 +1,10 @@
 "use client";
 
 import { LeadTable } from "@/components/Dashboard/Leads/LeadTable";
-import { LeadKanban } from "@/components/Dashboard/Leads/LeadKanban";
+// import { LeadKanban } from "@/components/Dashboard/Leads/LeadKanban";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LayoutGrid, List, Users } from "lucide-react";
+import { List, Users } from "lucide-react";
 
 export default function LeadsPage() {
     return (
@@ -17,10 +17,12 @@ export default function LeadsPage() {
                             <List className="h-4 w-4" />
                             List View
                         </TabsTrigger>
+                        {/* 
                         <TabsTrigger value="kanban" className="flex items-center gap-2">
                             <LayoutGrid className="h-4 w-4" />
                             Kanban Board
                         </TabsTrigger>
+                        */}
                     </TabsList>
                 </div>
 
@@ -43,9 +45,11 @@ export default function LeadsPage() {
                     </Card>
                 </TabsContent>
 
+                {/* 
                 <TabsContent value="kanban" className="space-y-4">
                     <LeadKanban />
                 </TabsContent>
+                */}
             </Tabs>
         </div>
     );
