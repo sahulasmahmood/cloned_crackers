@@ -123,7 +123,9 @@ async function getKPICards(startDate, endDate, prevStartDate, prevEndDate) {
       prevOnlineOrders,
       warehouses,
       currentDeliveries,
-      customers
+      customers,
+      cancelledPosOrders,
+      cancelledOnlineOrders
     ] = await Promise.all([
       // Current POS Orders
       prisma.pOSOrder.findMany({
@@ -193,17 +195,8 @@ async function getKPICards(startDate, endDate, prevStartDate, prevEndDate) {
         }
       }),
       // Total customers
-      prisma.customer.count()
-    ]);
-
-    // Current period calculations
-    const currentOrders = [...currentPosOrders, ...currentOnlineOrders];
-    const totalOrders = currentOrders.length;
-    const totalRevenue = currentOrders.reduce((sum, order) => sum + (order.total || 0), 0);
-    const avgOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
-
-    // Count cancelled orders separately (not included in totalOrders)
-    const [cancelledPosOrders, cancelledOnlineOrders] = await Promise.all([
+      prisma.customer.count(),
+      // Cancelled orders (counted in the same round-trip, not included in totalOrders)
       prisma.pOSOrder.count({
         where: {
           createdAt: { gte: startDate, lte: endDate },
@@ -217,6 +210,13 @@ async function getKPICards(startDate, endDate, prevStartDate, prevEndDate) {
         }
       })
     ]);
+
+    // Current period calculations
+    const currentOrders = [...currentPosOrders, ...currentOnlineOrders];
+    const totalOrders = currentOrders.length;
+    const totalRevenue = currentOrders.reduce((sum, order) => sum + (order.total || 0), 0);
+    const avgOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
+
     const cancelledOrders = cancelledPosOrders + cancelledOnlineOrders;
 
     // Previous period calculations for trends
@@ -1205,7 +1205,15 @@ async function getLicenseData() {
     const thirtyDaysFromNow = new Date();
     thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
 
-    const licenses = await prisma.license.findMany();
+    const licenses = await prisma.license.findMany({
+      select: {
+        id: true,
+        type: true,
+        number: true,
+        expiryDate: true,
+        isActive: true,
+      },
+    });
 
     const expiringSoon = licenses.filter(l =>
       l.expiryDate <= thirtyDaysFromNow && l.expiryDate >= today

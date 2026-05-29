@@ -33,7 +33,10 @@ export const ProductsList = () => {
   }, [pathname, router]);
 
   const handleTabChange = (value: string) => {
-    setActiveTab(value);
+    // Only navigate. The pathname effect (and the destination route) drive
+    // activeTab. Calling setActiveTab here as well would switch the tab on the
+    // current page AND re-mount it again after navigation — making the table
+    // load/blink twice.
     router.push(`/dashboard/products-list/${value}`);
   };
 

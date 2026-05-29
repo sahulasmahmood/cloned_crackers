@@ -15,6 +15,7 @@ import { WarehouseAlerts } from "./WarehouseAlerts";
 import { EODClosing } from "./EODClosing";
 import { LeadsAnalytics } from "./LeadsAnalytics";
 import { LicenseWarnings } from "./LicenseWarnings";
+import { DashboardSkeleton } from "./DashboardSkeleton";
 import { toast } from "sonner";
 import { AdvancedDateRangePicker } from "@/components/ui/advanced-date-range-picker";
 import { DateRange } from "react-day-picker";
@@ -149,14 +150,7 @@ export default function Dashboard() {
 
         {/* Dashboard Content - Only this section updates */}
         {loading ? (
-          <div className="flex items-center justify-center py-20">
-            <div className="flex items-center gap-2">
-              <RefreshCw className="h-5 w-5 animate-spin text-slate-600 dark:text-slate-400" />
-              <span className="text-slate-600 dark:text-slate-400">
-                Loading dashboard data...
-              </span>
-            </div>
-          </div>
+          <DashboardSkeleton />
         ) : !dashboardData ? (
           <div className="flex items-center justify-center h-96">
             <p className="text-muted-foreground">No dashboard data available</p>

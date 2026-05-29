@@ -26,5 +26,15 @@ export const licenseService = {
     deleteLicense: async (id: string) => {
         const response = await axiosInstance.delete(`${API_URL}/${id}`);
         return response.data;
+    },
+
+    // Upload a license document (PDF/image) -> returns the Cloudinary URL
+    uploadDocument: async (file: File): Promise<string> => {
+        const formData = new FormData();
+        formData.append("document", file);
+        const response = await axiosInstance.post(`${API_URL}/upload`, formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+        });
+        return response.data.data.documentUrl as string;
     }
 };

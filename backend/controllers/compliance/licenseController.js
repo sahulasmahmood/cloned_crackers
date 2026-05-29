@@ -1,4 +1,9 @@
 const { prisma } = require('../../config/database');
+const {
+    uploadToCloudinary,
+    deleteFromCloudinary,
+    getPublicIdFromUrl
+} = require('../../utils/common/cloudinary');
 
 /**
  * Create a new license
@@ -111,6 +116,19 @@ const updateLicense = async (req, res) => {
             updateData.expiryDate = new Date(updateData.expiryDate);
         }
 
+        // If the document is being replaced, clean up the previous one (best-effort)
+        if (updateData.documentUrl) {
+            const existing = await prisma.license.findUnique({ where: { id } });
+            if (existing?.documentUrl && existing.documentUrl !== updateData.documentUrl) {
+                try {
+                    const publicId = getPublicIdFromUrl(existing.documentUrl);
+                    if (publicId) await deleteFromCloudinary(publicId);
+                } catch (e) {
+                    console.error('Failed to delete replaced license document:', e.message);
+                }
+            }
+        }
+
         const license = await prisma.license.update({
             where: { id },
             data: updateData
@@ -140,6 +158,24 @@ const deleteLicense = async (req, res) => {
     try {
         const { id } = req.params;
 
+        const existing = await prisma.license.findUnique({ where: { id } });
+        if (!existing) {
+            return res.status(404).json({
+                success: false,
+                error: 'License not found'
+            });
+        }
+
+        // Best-effort cleanup of the attached document so we don't orphan files
+        if (existing.documentUrl) {
+            try {
+                const publicId = getPublicIdFromUrl(existing.documentUrl);
+                if (publicId) await deleteFromCloudinary(publicId);
+            } catch (e) {
+                console.error('Failed to delete license document from Cloudinary:', e.message);
+            }
+        }
+
         await prisma.license.delete({
             where: { id }
         });
@@ -159,9 +195,41 @@ const deleteLicense = async (req, res) => {
     }
 };
 
+/**
+ * Upload a license document (PDF or image) to Cloudinary
+ * POST /api/compliance/licenses/upload
+ */
+const uploadLicenseDocument = async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({
+                success: false,
+                error: 'No document uploaded'
+            });
+        }
+
+        const result = await uploadToCloudinary(req.file.buffer, 'compliance/licenses');
+
+        res.json({
+            success: true,
+            data: { documentUrl: result.secure_url },
+            message: 'Document uploaded successfully'
+        });
+
+    } catch (error) {
+        console.error('Error uploading license document:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Failed to upload document',
+            message: error.message
+        });
+    }
+};
+
 module.exports = {
     createLicense,
     getLicenses,
     updateLicense,
-    deleteLicense
+    deleteLicense,
+    uploadLicenseDocument
 };
