@@ -8,6 +8,10 @@ const {
   getOrderStats,
   downloadOrderInvoice,
 } = require('../../controllers/order/adminOrderController');
+const { authenticateToken, requireRole } = require('../../middleware/auth');
+
+// All admin order routes require an authenticated admin
+router.use(authenticateToken, requireRole('admin'));
 
 // Get order statistics
 router.get('/stats', getOrderStats);
