@@ -35,7 +35,7 @@ export default function SortDropdown({ options, value, onChange }: SortDropdownP
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center justify-between gap-2 border rounded px-3 py-1.5 text-sm bg-white transition-colors min-w-[170px] ${
-          isOpen ? 'border-[#e63946] ring-1 ring-[#e63946]' : 'border-gray-300 hover:border-[#e63946]'
+          isOpen ? 'border-[#FFD700] ring-1 ring-[#FFD700]' : 'border-gray-300 hover:border-[#FFD700]'
         }`}
       >
         <span className="truncate text-gray-700">{selectedOption.label}</span>
@@ -56,8 +56,8 @@ export default function SortDropdown({ options, value, onChange }: SortDropdownP
               }}
               className={`w-full text-left px-3 py-2 text-sm transition-colors ${
                 value === option.value 
-                  ? 'bg-red-50 text-[#e63946] font-medium' 
-                  : 'text-gray-700 hover:bg-gray-50 hover:text-[#e63946]'
+                  ? 'bg-red-50 text-[#FFD700] font-medium' 
+                  : 'text-gray-700 hover:bg-gray-50 hover:text-[#FFD700]'
               }`}
             >
               {option.label}

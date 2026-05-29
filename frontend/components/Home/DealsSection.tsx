@@ -49,7 +49,7 @@ export default function DealsSection({ categories }: DealsSectionProps) {
                   )}
                 </div>
                 <div className="p-2 sm:p-3 text-center">
-                  <span className="text-[10px] sm:text-xs md:text-sm text-gray-800 font-medium line-clamp-2 group-hover:text-[#e63946] transition-colors">
+                  <span className="text-[10px] sm:text-xs md:text-sm text-gray-800 font-medium line-clamp-2 group-hover:text-[#FFD700] transition-colors">
                     {category.name}
                   </span>
                 </div>

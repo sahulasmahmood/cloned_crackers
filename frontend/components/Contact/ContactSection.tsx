@@ -53,8 +53,8 @@ export default function ContactSection({ initialCompanySettings }: ContactSectio
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-10">
           {companySettings?.phone && (
             <div className="bg-white rounded-lg p-4 sm:p-6 text-center">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
-                <IconPhone size={18} className="text-[#E63946] sm:w-[22px] sm:h-[22px]" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#FFD700]/20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                <IconPhone size={18} className="text-[#FFD700] sm:w-[22px] sm:h-[22px]" />
               </div>
               <h3 className="font-semibold text-gray-800 mb-1 text-sm sm:text-base">Call Us</h3>
               <p className="text-gray-600 text-sm">{companySettings.phone}</p>
@@ -62,8 +62,8 @@ export default function ContactSection({ initialCompanySettings }: ContactSectio
           )}
           {companySettings?.email && (
             <div className="bg-white rounded-lg p-4 sm:p-6 text-center">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
-                <IconMail size={18} className="text-[#E63946] sm:w-[22px] sm:h-[22px]" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#FFD700]/20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                <IconMail size={18} className="text-[#FFD700] sm:w-[22px] sm:h-[22px]" />
               </div>
               <h3 className="font-semibold text-gray-800 mb-1 text-sm sm:text-base">Email Us</h3>
               <p className="text-gray-600 text-sm">{companySettings.email}</p>
@@ -71,8 +71,8 @@ export default function ContactSection({ initialCompanySettings }: ContactSectio
           )}
           {companySettings?.address && (
             <div className="bg-white rounded-lg p-4 sm:p-6 text-center">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
-                <IconMapPin size={18} className="text-[#E63946] sm:w-[22px] sm:h-[22px]" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#FFD700]/20 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                <IconMapPin size={18} className="text-[#FFD700] sm:w-[22px] sm:h-[22px]" />
               </div>
               <h3 className="font-semibold text-gray-800 mb-1 text-sm sm:text-base">Visit Us</h3>
               <p className="text-gray-600 text-sm">{companySettings.address}</p>
@@ -97,7 +97,7 @@ export default function ContactSection({ initialCompanySettings }: ContactSectio
                 placeholder="Your Name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E63946] text-sm"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-sm"
                 required
               />
               <input
@@ -106,7 +106,7 @@ export default function ContactSection({ initialCompanySettings }: ContactSectio
                 placeholder="Your Email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E63946] text-sm"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-sm"
                 required
               />
             </div>
@@ -116,7 +116,7 @@ export default function ContactSection({ initialCompanySettings }: ContactSectio
               placeholder="Your Phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E63946] text-sm"
+              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-sm"
             />
             <textarea
               name="message"
@@ -124,13 +124,13 @@ export default function ContactSection({ initialCompanySettings }: ContactSectio
               value={formData.message}
               onChange={handleChange}
               rows={4}
-              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E63946] resize-none text-sm"
+              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] resize-none text-sm"
               required
             ></textarea>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#E63946] text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-[#C62E39] disabled:bg-gray-400 disabled:cursor-not-allowed text-sm sm:text-base transition-colors"
+              className="w-full bg-[#FFD700] text-gray-900 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-[#FFCA28] disabled:bg-gray-400 disabled:cursor-not-allowed text-sm sm:text-base transition-colors"
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>

@@ -142,7 +142,7 @@ export default function EnquiryDetailsClient({
                 {/* Back Button */}
                 <Link
                     href="/my-enquiries"
-                    className="inline-flex items-center gap-2 text-gray-600 hover:text-[#e63946] mb-6 transition-colors"
+                    className="inline-flex items-center gap-2 text-gray-600 hover:text-[#FFD700] mb-6 transition-colors"
                 >
                     <IconChevronLeft size={20} />
                     Back to Enquiries
@@ -256,7 +256,7 @@ export default function EnquiryDetailsClient({
                                 className="bg-white rounded-lg shadow-sm p-6"
                             >
                                 <div className="flex items-center gap-2 mb-4">
-                                    <IconMapPin size={20} className="text-[#e63946]" />
+                                    <IconMapPin size={20} className="text-[#FFD700]" />
                                     <h2 className="text-lg font-semibold text-gray-900">
                                         Contact Details
                                     </h2>
@@ -305,7 +305,7 @@ export default function EnquiryDetailsClient({
                                         <span className="text-lg font-semibold text-gray-900">
                                             Total Estimated
                                         </span>
-                                        <span className="text-lg font-bold text-[#e63946]">
+                                        <span className="text-lg font-bold text-[#FFD700]">
                                             {currencySymbol}
                                             {(lead.totalBudget || lead.totalAmount || 0).toFixed(2)}
                                         </span>

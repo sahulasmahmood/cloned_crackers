@@ -16,8 +16,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "ECommerce App",
-  description: "Modern ecommerce application with authentication",
+  title: "Firecrackers - Premium Crackers & Sparklers Online",
+  description: "Shop premium firecrackers, sparklers, sky rockets & festive items online. Best prices, safe delivery across India. Shop now for Diwali & all celebrations! 🎆",
 };
 
 export default function RootLayout({

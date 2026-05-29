@@ -56,7 +56,7 @@ export default function ComparePageClient() {
       <main className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-gray-600 mb-8">
-          <Link href="/" className="hover:text-[#e63946]">
+          <Link href="/" className="hover:text-[#FFD700]">
             Home
           </Link>
           <span>/</span>
@@ -86,7 +86,7 @@ export default function ComparePageClient() {
             </p>
             <Link
               href="/products"
-              className="bg-[#e63946] text-white px-8 py-3 rounded-md hover:bg-[#c1121f] transition-colors"
+              className="bg-[#FFD700] text-gray-900 px-8 py-3 rounded-md hover:bg-[#FFCA28] transition-colors"
             >
               Start Shopping
             </Link>
@@ -103,7 +103,7 @@ export default function ComparePageClient() {
                     {compareProducts.map((product) => (
                       <TableHead key={product.id} className="p-6 w-80 border-r">
                         <div className="relative">
-                          <button className="absolute top-0 right-0 p-1 text-gray-400 hover:text-red-500">
+                          <button className="absolute top-0 right-0 p-1 text-gray-400 hover:text-[#CC9900]">
                             <IconX size={20} />
                           </button>
                           <div className="text-center">
@@ -118,7 +118,7 @@ export default function ComparePageClient() {
                               {product.name}
                             </h3>
                             <div className="flex items-center justify-center gap-2 mb-4">
-                              <span className="text-2xl font-bold text-[#e63946]">
+                              <span className="text-2xl font-bold text-[#FFD700]">
                                 {currencySymbol}
                                 {product.price}
                               </span>
@@ -225,7 +225,7 @@ export default function ComparePageClient() {
                     {compareProducts.map((product) => (
                       <TableCell key={product.id} className="p-6 border-r">
                         <div className="flex gap-3">
-                          <button className="bg-[#e63946] text-white px-4 py-2 rounded-md hover:bg-[#c1121f] transition-colors flex items-center justify-center gap-2 flex-1">
+                          <button className="bg-[#FFD700] text-gray-900 px-4 py-2 rounded-md hover:bg-[#FFCA28] transition-colors flex items-center justify-center gap-2 flex-1">
                             <IconShoppingCart size={16} />
                             Add
                           </button>

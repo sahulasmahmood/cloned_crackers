@@ -25,7 +25,7 @@ export default function HotDealsProducts({ products }: HotDealsProductsProps) {
           </div>
           <Link 
             href="/products" 
-            className="text-[#e63946] font-medium hover:underline text-xs sm:text-sm md:text-base"
+            className="text-[#FFD700] font-medium hover:underline text-xs sm:text-sm md:text-base"
           >
             View All →
           </Link>

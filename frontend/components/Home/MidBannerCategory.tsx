@@ -2,36 +2,35 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCurrency } from "@/hooks/useCurrency";
+
 
 export default function MidBannerCategory() {
-  const currencySymbol = useCurrency();
   const banners = [
     {
-      title: "Fresh Fruits",
-      subtitle: "Seasonal & Exotic",
-      offer: "UP TO 35% OFF",
-      bgColor: "bg-rose-50/60",
+      title: "Ground Crackers",
+      subtitle: "Chakkar & Flower Pots",
+      offer: "UP TO 30% OFF",
+      bgColor: "bg-orange-50/80",
       image:
-        "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=400&h=250&fit=crop",
+        "https://images.unsplash.com/photo-1541604085-f51390317e82?w=400&h=250&fit=crop",
       link: "/products",
     },
     {
-      title: "Kitchen Essentials",
-      subtitle: "Oil, Ghee & Masala",
-      offer: `STARTING ${currencySymbol}99`,
-      bgColor: "bg-amber-50/60",
+      title: "Sky Rockets",
+      subtitle: "Aerial & Bomb Crackers",
+      offer: "BUY MORE SAVE MORE",
+      bgColor: "bg-yellow-50/80",
       image:
-        "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&h=250&fit=crop",
+        "https://images.unsplash.com/photo-1533230408708-8f9f91d1235a?w=400&h=250&fit=crop",
       link: "/products",
     },
     {
-      title: "Personal Care",
-      subtitle: "Beauty & Hygiene",
-      offer: "BUY 1 GET 1",
-      bgColor: "bg-blue-50/60",
+      title: "Sparklers",
+      subtitle: "Phooljhadi & Fancy Items",
+      offer: "FREE GIFT ON ₹999+",
+      bgColor: "bg-amber-50/80",
       image:
-        "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=400&h=250&fit=crop",
+        "https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=400&h=250&fit=crop",
       link: "/products",
     },
   ];
@@ -55,11 +54,11 @@ export default function MidBannerCategory() {
                     {banner.title}
                   </h3>
                   <div className="flex items-center gap-2 mb-2 sm:mb-4">
-                    <span className="text-[10px] sm:text-xs font-bold bg-[#e63946] text-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded">
+                    <span className="text-[10px] sm:text-xs font-bold bg-[#FFD700] text-gray-900 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded">
                       {banner.offer}
                     </span>
                   </div>
-                  <span className="inline-flex items-center text-[10px] sm:text-xs font-medium text-[#e63946] group-hover:underline underline-offset-4">
+                  <span className="inline-flex items-center text-[10px] sm:text-xs font-medium text-[#FFD700] group-hover:underline underline-offset-4">
                     Show More{" "}
                     <svg
                       className="w-2.5 h-2.5 sm:w-3 sm:h-3 ml-1 transform group-hover:translate-x-1 transition-transform"

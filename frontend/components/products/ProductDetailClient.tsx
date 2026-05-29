@@ -306,7 +306,7 @@ export default function ProductDetailClient({
           <h1 className="text-xl sm:text-3xl font-bold text-gray-800 mb-4">
             Product Not Found
           </h1>
-          <Link href="/" className="text-[#e63946] hover:underline">
+          <Link href="/" className="text-[#FFD700] hover:underline">
             Return to Home
           </Link>
         </div>
@@ -338,7 +338,7 @@ export default function ProductDetailClient({
           <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm overflow-x-auto">
             <Link
               href="/"
-              className="text-gray-500 hover:text-[#e63946] whitespace-nowrap"
+              className="text-gray-500 hover:text-[#FFD700] whitespace-nowrap"
             >
               Home
             </Link>
@@ -349,7 +349,7 @@ export default function ProductDetailClient({
             <Link
               href={`/category/${generateCategorySlug(product.category)}/${product.category
                 }`}
-              className="text-gray-500 hover:text-[#e63946] whitespace-nowrap"
+              className="text-gray-500 hover:text-[#FFD700] whitespace-nowrap"
             >
               {product.category}
             </Link>
@@ -420,7 +420,7 @@ export default function ProductDetailClient({
                       key={index}
                       onClick={() => setSelectedImageIndex(index)}
                       className={`flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-lg overflow-hidden border-2 transition-all ${selectedImageIndex === index
-                          ? "border-[#e63946] ring-2 ring-red-100"
+                          ? "border-[#FFD700] ring-2 ring-red-100"
                           : "border-gray-200 hover:border-gray-300"
                         }`}
                     >
@@ -646,8 +646,8 @@ export default function ProductDetailClient({
                               ? variantInactive
                                 ? "border-gray-400 bg-gray-100 text-gray-500"
                                 : variantOutOfStock
-                                  ? "border-red-400 bg-red-50 text-red-600"
-                                  : "border-[#e63946] bg-red-50 text-[#e63946]"
+                                  ? "border-red-400 bg-red-50 text-red-500"
+                                  : "border-[#FFD700] bg-red-50 text-[#FFD700]"
                               : variantInactive
                                 ? "border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed"
                                 : variantOutOfStock
@@ -691,7 +691,7 @@ export default function ProductDetailClient({
                         key={style.id}
                         onClick={() => setSelectedCuttingStyle(style.name)}
                         className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg border-2 text-xs sm:text-sm font-medium transition-colors ${selectedCuttingStyle === style.name
-                            ? "border-[#e63946] bg-red-50 text-[#e63946]"
+                            ? "border-[#FFD700] bg-red-50 text-[#FFD700]"
                             : "border-gray-200 hover:border-gray-300"
                           }`}
                       >
@@ -707,29 +707,29 @@ export default function ProductDetailClient({
                   <button
                     onClick={handleAddToCart}
                     disabled={isOutOfStock}
-                    className="w-full sm:flex-1 bg-[#e63946] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg font-medium hover:bg-[#c1121f] transition-colors text-sm sm:text-base disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    className="w-full sm:flex-1 bg-[#FFD700] text-gray-900 py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg font-medium hover:bg-[#FFCA28] transition-colors text-sm sm:text-base disabled:bg-gray-400 disabled:cursor-not-allowed"
                   >
                     {isOutOfStock ? "Out of Stock" : "Add to Enquiry"}
                   </button>
                 ) : (
                   <>
-                    <div className="flex items-center justify-center border-2 border-[#e63946] rounded-lg">
+                    <div className="flex items-center justify-center border-2 border-[#FFD700] rounded-lg">
                       <button
                         onClick={handleDecrement}
-                        className="px-3 sm:px-4 py-2 text-[#e63946] hover:bg-red-50 transition-colors"
+                        className="px-3 sm:px-4 py-2 text-[#FFD700] hover:bg-[#FFCA28] transition-colors"
                       >
                         <IconMinus
                           size={16}
                           className="sm:w-[18px] sm:h-[18px]"
                         />
                       </button>
-                      <span className="px-4 sm:px-6 py-2 font-semibold border-x-2 border-[#e63946] text-[#e63946]">
+                      <span className="px-4 sm:px-6 py-2 font-semibold border-x-2 border-[#FFD700] text-[#FFD700]">
                         {quantity}
                       </span>
                       <button
                         onClick={handleIncrement}
                         disabled={quantity >= availableStock}
-                        className="px-3 sm:px-4 py-2 text-[#e63946] hover:bg-red-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-3 sm:px-4 py-2 text-[#FFD700] hover:bg-[#FFCA28] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         <IconPlus
                           size={16}
@@ -755,7 +755,7 @@ export default function ProductDetailClient({
                   <div className="flex items-center gap-2 sm:gap-3">
                     <IconTruck
                       size={20}
-                      className="text-[#e63946] flex-shrink-0 sm:w-6 sm:h-6"
+                      className="text-[#FFD700] flex-shrink-0 sm:w-6 sm:h-6"
                     />
                     <div>
                       <p className="text-xs sm:text-sm font-medium">
@@ -773,7 +773,7 @@ export default function ProductDetailClient({
                   <div className="flex items-center gap-2 sm:gap-3">
                     <IconShieldCheck
                       size={20}
-                      className="text-[#e63946] flex-shrink-0 sm:w-6 sm:h-6"
+                      className="text-[#FFD700] flex-shrink-0 sm:w-6 sm:h-6"
                     />
                     <div>
                       <p className="text-xs sm:text-sm font-medium">
@@ -788,7 +788,7 @@ export default function ProductDetailClient({
                     <div className="flex items-center gap-2 sm:gap-3">
                       <IconRefresh
                         size={20}
-                        className="text-[#e63946] flex-shrink-0 sm:w-6 sm:h-6"
+                        className="text-[#FFD700] flex-shrink-0 sm:w-6 sm:h-6"
                       />
                       <div>
                         <p className="text-xs sm:text-sm font-medium">

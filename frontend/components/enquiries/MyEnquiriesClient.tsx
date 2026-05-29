@@ -151,7 +151,7 @@ export default function MyEnquiriesClient() {
                                 setCurrentPage(1);
                             }}
                             className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-colors ${selectedStatus === filter.value
-                                ? "bg-[#e63946] text-white"
+                                ? "bg-[#FFD700] text-gray-900"
                                 : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
                                 }`}
                         >
@@ -183,7 +183,7 @@ export default function MyEnquiriesClient() {
                         </p>
                         <Link
                             href="/"
-                            className="inline-block bg-[#e63946] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-md hover:bg-[#c1121f] transition-colors font-medium text-sm sm:text-base"
+                            className="inline-block bg-[#FFD700] text-gray-900 px-5 sm:px-6 py-2.5 sm:py-3 rounded-md hover:bg-[#FFCA28] transition-colors font-medium text-sm sm:text-base"
                         >
                             Browse Products
                         </Link>
@@ -220,7 +220,7 @@ export default function MyEnquiriesClient() {
                                                 <p className="text-xs text-gray-500 mb-0.5 sm:mb-1 sm:hidden">
                                                     Estimated Value
                                                 </p>
-                                                <p className="font-semibold text-[#e63946] text-sm sm:text-base">
+                                                <p className="font-semibold text-[#FFD700] text-sm sm:text-base">
                                                     {currencySymbol}
                                                     {(lead.totalAmount || (lead as any).totalBudget || 0).toFixed(2)}
                                                 </p>
@@ -284,7 +284,7 @@ export default function MyEnquiriesClient() {
                                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-3 sm:gap-4">
                                         <Link
                                             href={`/my-enquiries/${lead.leadNumber}`}
-                                            className="flex items-center gap-2 text-[#e63946] hover:text-[#c1121f] font-medium text-sm transition-colors"
+                                            className="flex items-center gap-2 text-[#FFD700] hover:text-[#FFCA28] font-medium text-sm transition-colors"
                                         >
                                             View Details
                                             <IconChevronRight size={18} />
@@ -313,7 +313,7 @@ export default function MyEnquiriesClient() {
                                         key={page}
                                         onClick={() => setCurrentPage(page)}
                                         className={`w-8 h-8 sm:w-10 sm:h-10 rounded-md font-medium transition-colors text-sm ${currentPage === page
-                                            ? "bg-[#e63946] text-white"
+                                            ? "bg-[#FFD700] text-gray-900"
                                             : "border border-gray-300 text-gray-700 hover:bg-gray-50"
                                             }`}
                                     >

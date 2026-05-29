@@ -19,7 +19,7 @@ export default function WishlistPageClient() {
         <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-6">
           <div className="flex items-center justify-center py-12">
             <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#e63946] mx-auto mb-4"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FFD700] mx-auto mb-4"></div>
               <p className="text-gray-600">Loading wishlist...</p>
             </div>
           </div>
@@ -40,7 +40,7 @@ export default function WishlistPageClient() {
               variant="outline"
               size="sm"
               onClick={clearWishlist}
-              className="text-red-600 hover:text-red-700 hover:bg-red-50"
+              className="text-red-500 hover:text-[#CC9900] hover:bg-[#FFCA28]"
             >
               <IconTrash size={16} className="mr-1" />
               Clear All
@@ -53,7 +53,7 @@ export default function WishlistPageClient() {
             <IconHeart size={36} className="text-gray-300 mx-auto mb-3 sm:mb-4 sm:w-12 sm:h-12" />
             <h2 className="text-base sm:text-lg font-semibold text-gray-800 mb-2">Your wishlist is empty</h2>
             <p className="text-sm text-gray-500 mb-4">Save items you love by clicking the heart icon on products</p>
-            <Link href="/products" className="inline-block bg-[#E63946] text-white px-5 sm:px-6 py-2 rounded-lg font-medium text-sm hover:bg-[#d62839] transition-colors">
+            <Link href="/products" className="inline-block bg-[#FFD700] text-gray-900 px-5 sm:px-6 py-2 rounded-lg font-medium text-sm hover:bg-[#FFCA28] transition-colors">
               Browse Products
             </Link>
           </div>

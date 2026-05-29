@@ -76,7 +76,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           className={`sm:w-5 sm:h-5 transition-colors ${
             isWishlisted
               ? "fill-red-500 text-red-500"
-              : "text-gray-600 hover:text-red-500"
+              : "text-gray-600 hover:text-[#CC9900]"
           }`}
         />
       </button>
@@ -115,7 +115,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Product Name - Fixed height */}
         <Link href={`/products/${product.id}`}>
-          <h3 className="text-xs sm:text-sm font-medium text-gray-800 mb-1.5 sm:mb-2 line-clamp-2 h-8 sm:h-10 hover:text-[#e63946] transition-colors">
+          <h3 className="text-xs sm:text-sm font-medium text-gray-800 mb-1.5 sm:mb-2 line-clamp-2 h-8 sm:h-10 hover:text-[#FFD700] transition-colors">
             {product.name}
           </h3>
         </Link>
@@ -205,7 +205,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 <Link
                   href={`/products/${product.id}`}
                   onClick={() => setShowVariants(false)}
-                  className="block w-full text-center py-2 px-3 text-sm font-semibold text-[#e63946] hover:bg-red-50 transition-colors border-t border-gray-100"
+                  className="block w-full text-center py-2 px-3 text-sm font-semibold text-[#FFD700] hover:bg-[#FFCA28] transition-colors border-t border-gray-100"
                 >
                   Show More (+{activeVariants.length - 5})
                 </Link>
@@ -246,24 +246,24 @@ export default function ProductCard({ product }: ProductCardProps) {
           {quantity === 0 ? (
             <button
               onClick={handleAddToCart}
-              className="flex-1 py-1.5 sm:py-2 px-2 sm:px-4 bg-[#e63946] text-white rounded font-medium hover:bg-[#d62839] transition-all duration-200 active:scale-95 text-xs sm:text-sm"
+              className="flex-1 py-1.5 sm:py-2 px-2 sm:px-4 bg-[#FFD700] text-gray-900 rounded font-medium hover:bg-[#FFCA28] transition-all duration-200 active:scale-95 text-xs sm:text-sm"
             >
               Add to Enquiry
             </button>
           ) : (
-            <div className="flex-1 flex items-center justify-between border-2 border-[#e63946] rounded overflow-hidden">
+            <div className="flex-1 flex items-center justify-between border-2 border-[#FFD700] rounded overflow-hidden">
               <button
                 onClick={handleDecrement}
-                className="px-2 sm:px-3 py-1.5 sm:py-2 text-[#e63946] hover:bg-[#e63946] hover:text-white transition-all duration-200 active:scale-95"
+                className="px-2 sm:px-3 py-1.5 sm:py-2 text-[#FFD700] hover:bg-[#FFD700] hover:text-white transition-all duration-200 active:scale-95"
               >
                 <IconMinus size={14} className="sm:w-4 sm:h-4" />
               </button>
-              <span className="font-medium text-[#e63946] text-xs sm:text-sm">
+              <span className="font-medium text-[#FFD700] text-xs sm:text-sm">
                 {quantity}
               </span>
               <button
                 onClick={handleIncrement}
-                className="px-2 sm:px-3 py-1.5 sm:py-2 text-[#e63946] hover:bg-[#e63946] hover:text-white transition-all duration-200 active:scale-95"
+                className="px-2 sm:px-3 py-1.5 sm:py-2 text-[#FFD700] hover:bg-[#FFD700] hover:text-white transition-all duration-200 active:scale-95"
               >
                 <IconPlus size={14} className="sm:w-4 sm:h-4" />
               </button>

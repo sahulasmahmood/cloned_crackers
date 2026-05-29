@@ -77,11 +77,11 @@
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
 
   
-    /* LEATS Brand Colors */
-    --leats-red: #E31837;
-    --leats-yellow: #FFD700;
-    --leats-dark: #333333;
-    --leats-light: #F5F5F5;
+    /* Firecrackers Brand Colors */
+    --fc-primary: #FFD700;
+    --fc-accent: #FFCA28;
+    --fc-dark: #111111;
+    --fc-light: #FFF8E7;
 }
 
 .dark {
@@ -176,12 +176,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #E31837;
+  background: #FFD700;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c41530;
+  background: #FFCA28;
 }
 
 /* Weight selector dropdown */

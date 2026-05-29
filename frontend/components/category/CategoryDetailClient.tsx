@@ -254,7 +254,7 @@ export default function CategoryDetailClient({
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="text-center">
           <h1 className="text-xl sm:text-3xl font-bold text-gray-800 mb-4">Category Not Found</h1>
-          <Link href="/" className="text-[#e63946] hover:underline">
+          <Link href="/" className="text-[#FFD700] hover:underline">
             Return to Home
           </Link>
         </div>
@@ -298,13 +298,13 @@ export default function CategoryDetailClient({
       <div className="bg-white border-b">
         <div className="container mx-auto px-3 sm:px-4 py-2 sm:py-3">
           <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm">
-            <Link href="/" className="text-gray-500 hover:text-[#e63946]">
+            <Link href="/" className="text-gray-500 hover:text-[#FFD700]">
               Home
             </Link>
             <IconChevronRight size={14} className="text-gray-400" />
             {subcategory && category ? (
               <>
-                <Link href={generateCategoryUrl(category)} className="text-gray-500 hover:text-[#e63946]">
+                <Link href={generateCategoryUrl(category)} className="text-gray-500 hover:text-[#FFD700]">
                   {category.name}
                 </Link>
                 <IconChevronRight size={14} className="text-gray-400" />
@@ -355,7 +355,7 @@ export default function CategoryDetailClient({
                   <IconFilter size={16} />
                   <span>Filter</span>
                   {activeFilterCount > 0 && (
-                    <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#e63946] text-white text-xs rounded-full flex items-center justify-center">
+                    <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#FFD700] text-gray-900 text-xs rounded-full flex items-center justify-center">
                       {activeFilterCount}
                     </span>
                   )}
@@ -394,7 +394,7 @@ export default function CategoryDetailClient({
               <div className="bg-white rounded-lg p-8 sm:p-12 text-center">
                 <p className="text-gray-500 mb-4">No products found matching your filters.</p>
                 {activeFilterCount > 0 && (
-                  <button onClick={clearAllFilters} className="text-[#e63946] hover:underline text-sm">
+                  <button onClick={clearAllFilters} className="text-[#FFD700] hover:underline text-sm">
                     Clear all filters
                   </button>
                 )}
@@ -427,7 +427,7 @@ export default function CategoryDetailClient({
                       key={i}
                       onClick={() => setCurrentPage(pageNum)}
                       className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded text-sm ${
-                        currentPage === pageNum ? 'bg-[#e63946] text-white' : 'border hover:bg-gray-100'
+                        currentPage === pageNum ? 'bg-[#FFD700] text-gray-900' : 'border hover:bg-gray-100'
                       }`}
                     >
                       {pageNum}
@@ -459,7 +459,7 @@ export default function CategoryDetailClient({
                 <IconAdjustments size={20} className="text-gray-600" />
                 <h3 className="font-semibold text-gray-800">Filters</h3>
                 {activeFilterCount > 0 && (
-                  <span className="px-2 py-0.5 bg-[#e63946] text-white text-xs rounded-full">
+                  <span className="px-2 py-0.5 bg-[#FFD700] text-gray-900 text-xs rounded-full">
                     {activeFilterCount}
                   </span>
                 )}
@@ -475,7 +475,7 @@ export default function CategoryDetailClient({
             <div className="sticky bottom-0 p-4 bg-white border-t">
               <button
                 onClick={() => setShowMobileFilter(false)}
-                className="w-full py-3 bg-[#e63946] text-white rounded-lg font-medium hover:bg-[#d62839]"
+                className="w-full py-3 bg-[#FFD700] text-gray-900 rounded-lg font-medium hover:bg-[#FFCA28]"
               >
                 Apply Filters ({totalCount} products)
               </button>

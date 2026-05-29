@@ -23,7 +23,7 @@ export const PolicyPage = ({ initialPolicy, slug, defaultTitle, defaultContent }
         <div className="bg-white border-b">
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center gap-2 text-sm">
-              <Link href="/" className="text-gray-500 hover:text-[#e63946]">
+              <Link href="/" className="text-gray-500 hover:text-[#FFD700]">
                 Home
               </Link>
               <IconChevronRight size={16} className="text-gray-400" />
@@ -53,7 +53,7 @@ export const PolicyPage = ({ initialPolicy, slug, defaultTitle, defaultContent }
       <div className="bg-white border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-gray-500 hover:text-[#e63946]">
+            <Link href="/" className="text-gray-500 hover:text-[#FFD700]">
               Home
             </Link>
             <IconChevronRight size={16} className="text-gray-400" />
