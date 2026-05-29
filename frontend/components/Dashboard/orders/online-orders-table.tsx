@@ -44,12 +44,14 @@ interface Order {
 interface OnlineOrdersTableProps {
   orders: Order[];
   onStatusChange: (orderId: string, newStatus: string) => void;
+  onPaymentStatusChange: (orderId: string, newStatus: string) => void;
   onDeleteOrder: (orderId: string) => void;
 }
 
 export function OnlineOrdersTable({ 
   orders, 
   onStatusChange,
+  onPaymentStatusChange,
   onDeleteOrder 
 }: OnlineOrdersTableProps) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -63,6 +65,11 @@ export function OnlineOrdersTable({
   const handleStatusChange = (orderId: string, orderNumber: string, newStatus: string) => {
     onStatusChange(orderId, newStatus);
     toast.success(`Order ${orderNumber} status changed to ${newStatus}`);
+  };
+
+  const handlePaymentStatusChange = (orderId: string, orderNumber: string, newStatus: string) => {
+    onPaymentStatusChange(orderId, newStatus);
+    toast.success(`Order ${orderNumber} payment marked as ${newStatus}`);
   };
 
   const handleDelete = (orderId: string, orderNumber: string) => {
@@ -93,6 +100,21 @@ export function OnlineOrdersTable({
     }
   };
 
+  const getPaymentBadgeColor = (payment: string) => {
+    switch (payment.toLowerCase()) {
+      case "paid":
+        return "bg-green-100 text-green-800 hover:bg-green-100";
+      case "unpaid":
+        return "bg-red-100 text-red-800 hover:bg-red-100";
+      case "pending":
+        return "bg-yellow-100 text-yellow-800 hover:bg-yellow-100";
+      case "refunded":
+        return "bg-gray-100 text-gray-800 hover:bg-gray-100";
+      default:
+        return "bg-gray-100 text-gray-800 hover:bg-gray-100";
+    }
+  };
+
   // Get available status options based on current status (forward flow only)
   const getAvailableStatuses = (currentStatus: string): string[] => {
     const statusFlow = {
@@ -105,6 +127,8 @@ export function OnlineOrdersTable({
 
     return statusFlow[currentStatus as keyof typeof statusFlow] || ["Pending", "Packed", "Shipped", "Delivered", "Cancelled"];
   };
+
+  const paymentOptions = ["unpaid", "pending", "paid", "refunded"];
 
   if (orders.length === 0) {
     return (
@@ -144,9 +168,32 @@ export function OnlineOrdersTable({
                   Rs. {order.total.toFixed(2)}
                 </TableCell>
                 <TableCell>
-                  <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-                    {order.payment}
-                  </Badge>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        className={`${getPaymentBadgeColor(order.payment)} px-3 py-1 h-auto font-medium capitalize`}
+                      >
+                        {order.payment}
+                        <ChevronDown className="ml-2 h-3 w-3" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start">
+                      {paymentOptions.map((paymentStatus) => (
+                        <DropdownMenuItem
+                          key={paymentStatus}
+                          onClick={() => handlePaymentStatusChange(order.id, order.orderNumber, paymentStatus)}
+                          className={`capitalize ${order.payment.toLowerCase() === paymentStatus ? "bg-gray-100" : ""}`}
+                          disabled={order.payment.toLowerCase() === paymentStatus}
+                        >
+                          <Badge className={`${getPaymentBadgeColor(paymentStatus)} mr-2 capitalize`}>
+                            {paymentStatus}
+                          </Badge>
+                          {paymentStatus}
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </TableCell>
                 <TableCell>
                   <DropdownMenu>

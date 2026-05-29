@@ -48,8 +48,8 @@ messaging.onBackgroundMessage((payload) => {
   // Backend should only send admin notifications to admin FCM tokens
   // This is a safety check in case backend sends wrong notification
   
-  // Get logo URL from payload data or use default
-  const logoUrl = payload.data?.logoUrl || '/logo.jpeg';
+  // Get logo URL from payload data (no static fallback logo)
+  const logoUrl = payload.data?.logoUrl || undefined;
 
   // ✅ Fix: Extract title and body from data payload (using custom keys to be safe)
   const notificationTitle = payload.notification?.title || payload.data?.notifTitle || payload.data?.title || 'New Notification (Updated)';

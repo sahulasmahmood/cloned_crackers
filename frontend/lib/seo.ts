@@ -24,7 +24,7 @@ export async function generatePageMetadata({
     const title = seoData?.metaTitle || defaultTitle;
     const description = seoData?.metaDescription || defaultDescription;
     const keywords = seoData?.metaKeywords || defaultKeywords;
-    const ogImage = seoData?.ogImage || "/logo.jpeg";
+    const ogImage = seoData?.ogImage || "";
 
     return {
       title,
@@ -33,21 +33,23 @@ export async function generatePageMetadata({
       openGraph: {
         title,
         description,
-        images: [
-          {
-            url: ogImage,
-            width: 1200,
-            height: 630,
-            alt: title,
-          },
-        ],
+        images: ogImage
+          ? [
+              {
+                url: ogImage,
+                width: 1200,
+                height: 630,
+                alt: title,
+              },
+            ]
+          : [],
         type: "website",
       },
       twitter: {
         card: "summary_large_image",
         title,
         description,
-        images: [ogImage],
+        images: ogImage ? [ogImage] : [],
       },
     };
   } catch (error) {

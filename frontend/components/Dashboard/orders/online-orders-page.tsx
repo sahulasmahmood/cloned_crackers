@@ -21,8 +21,22 @@ import { Search, Download, Filter, X } from "lucide-react";
 import { OnlineOrdersTable } from "./online-orders-table";
 import { toast } from "sonner";
 
-// Mock data for demonstration
-const initialMockOrders = [
+// Mock data COMMENTED OUT — this is a static demo component and is NOT used in production.
+// The live Online Orders page uses OnlineOrders.tsx (connected to the real API/DB).
+const initialMockOrders: {
+  id: string;
+  orderNumber: string;
+  orderDate: string;
+  customerName: string;
+  itemsOrdered: string;
+  total: number;
+  payment: string;
+  status: string;
+  deliveryType: string;
+}[] = [];
+
+/* Original mock data — kept commented for reference:
+[
   {
     id: "1",
     orderNumber: "ORD-20251208-000893",
@@ -134,6 +148,7 @@ const initialMockOrders = [
     deliveryType: "Courier",
   },
 ];
+*/
 
 export function OnlineOrdersPage() {
   const [orders, setOrders] = useState(initialMockOrders);
@@ -145,6 +160,14 @@ export function OnlineOrdersPage() {
     setOrders((prevOrders) =>
       prevOrders.map((order) =>
         order.id === orderId ? { ...order, status: newStatus } : order
+      )
+    );
+  };
+
+  const handlePaymentStatusChange = (orderId: string, newStatus: string) => {
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        order.id === orderId ? { ...order, payment: newStatus } : order
       )
     );
   };
@@ -352,6 +375,7 @@ export function OnlineOrdersPage() {
         <OnlineOrdersTable
           orders={filteredOrders}
           onStatusChange={handleStatusChange}
+          onPaymentStatusChange={handlePaymentStatusChange}
           onDeleteOrder={handleDeleteOrder}
         />
         <div className="mt-4">

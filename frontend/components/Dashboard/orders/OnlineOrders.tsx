@@ -606,6 +606,41 @@ export function OnlineOrders() {
     }
   };
 
+  const handlePaymentStatusChange = async (orderId: string, newStatus: string, currentStatus: string) => {
+    if (newStatus === currentStatus) return;
+
+    try {
+      setIsUpdatingStatus(`payment-${orderId}`);
+      const response = await axiosInstance.patch(
+        `/api/online/admin/orders/${orderId}/payment-status`,
+        { paymentStatus: newStatus }
+      );
+
+      if (response.data.success) {
+        toast.success(
+          `Payment status updated from "${currentStatus}" to "${newStatus}"`,
+          {
+            description: response.data.message || "Payment status updated successfully"
+          }
+        );
+        loadOrders();
+      }
+    } catch (error: unknown) {
+      console.error("Error updating payment status:", error);
+      
+      const axiosError = error as { response?: { data?: { error?: string; message?: string } } };
+      const errorMessage = axiosError.response?.data?.error || "Failed to update payment status";
+      const errorDescription = axiosError.response?.data?.message || "";
+      
+      toast.error(errorMessage, {
+        description: errorDescription,
+        duration: 5000
+      });
+    } finally {
+      setIsUpdatingStatus(null);
+    }
+  };
+
   const getStatusDropdown = (order: OnlineOrder) => {
     const isUpdating = isUpdatingStatus === order.id;
     
@@ -959,7 +994,37 @@ export function OnlineOrders() {
                   <TableCell>
                     <div className="space-y-1">
                       <p className="text-xs uppercase">{order.paymentMethod}</p>
-                      {getPaymentStatusBadge(order.paymentStatus)}
+                      
+                      <Select
+                        value={order.paymentStatus}
+                        onValueChange={(newStatus) => handlePaymentStatusChange(order.id, newStatus, order.paymentStatus)}
+                        disabled={isUpdatingStatus === `payment-${order.id}`}
+                      >
+                        <SelectTrigger className="h-7 text-xs px-2 w-[110px]">
+                          <SelectValue>
+                            <div className="flex items-center gap-1">
+                              {isUpdatingStatus === `payment-${order.id}` ? (
+                                <div className="w-3 h-3 border border-gray-300 border-t-blue-500 rounded-full animate-spin" />
+                              ) : null}
+                              {getPaymentStatusBadge(order.paymentStatus)}
+                            </div>
+                          </SelectValue>
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="pending">
+                            {getPaymentStatusBadge("pending")}
+                          </SelectItem>
+                          <SelectItem value="completed">
+                            {getPaymentStatusBadge("completed")}
+                          </SelectItem>
+                          <SelectItem value="failed">
+                            {getPaymentStatusBadge("failed")}
+                          </SelectItem>
+                          <SelectItem value="refunded">
+                            {getPaymentStatusBadge("refunded")}
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
                   </TableCell>
                   <TableCell>{getStatusDropdown(order)}</TableCell>

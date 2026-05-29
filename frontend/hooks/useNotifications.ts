@@ -147,7 +147,7 @@ export const useNotifications = (userId?: string, userType?: 'user' | 'admin') =
           if ((!hasActions || isUserImportant) && 'Notification' in window && Notification.permission === 'granted') {
             const notificationData: NotificationOptions = {
               body,
-              icon: payload.notification?.icon || '/logo.jpeg',
+              icon: payload.notification?.icon || undefined,
               // @ts-ignore
               image: payload.notification?.image || payload.data?.notifImage || payload.data?.image,
               tag: payload.messageId,

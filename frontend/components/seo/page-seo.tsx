@@ -39,7 +39,7 @@ export const PageSEOComponent = ({
   const metaTitle = seoData?.metaTitle || defaultTitle;
   const metaDescription = seoData?.metaDescription || defaultDescription;
   const metaKeywords = seoData?.metaKeywords || defaultKeywords;
-  const ogImage = seoData?.ogImage || "/logo.jpeg";
+  const ogImage = seoData?.ogImage || "";
 
   if (loading) {
     return null; // Don't render anything while loading
@@ -55,13 +55,13 @@ export const PageSEOComponent = ({
       <meta property="og:type" content="website" />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
-      <meta property="og:image" content={ogImage} />
-      
+      {ogImage && <meta property="og:image" content={ogImage} />}
+
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:image" content={ogImage} />
+      {ogImage && <meta name="twitter:image" content={ogImage} />}
     </Head>
   );
 };
