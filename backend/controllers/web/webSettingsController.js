@@ -1,5 +1,5 @@
 const { prisma } = require("../../config/database");
-const { uploadToS3, getPresignedUrl, deleteFromS3, getS3Object } = require("../../utils/web/uploadsS3");
+const { uploadToS3, getPresignedUrl, deleteFromS3 } = require("../../utils/web/uploadsS3");
 
 // Get current web settings
 const getWebSettings = async (req, res) => {
@@ -13,28 +13,26 @@ const getWebSettings = async (req, res) => {
       });
     }
 
-    // Use proxy endpoints instead of presigned URLs to avoid CORS issues
-    // Check for forwarded protocol (for proxies like Vercel, Heroku, etc.)
-    const protocol = req.get('x-forwarded-proto') || req.protocol;
-    const host = req.get('host');
-    const baseUrl = `${protocol}://${host}`;
-    
-    // Add version parameter based on updatedAt to bust cache when logo changes
+    // Cloudinary secure URLs are public and CORS-safe, so serve them directly
+    // instead of proxying through the backend (the old S3 proxy is no longer supported).
+    // Append a version param (from updatedAt) to bust caches when the asset changes.
     const version = settings.updatedAt ? new Date(settings.updatedAt).getTime() : Date.now();
-    
-    const logoUrl = settings.logoUrl
-      ? `${baseUrl}/api/web/web-settings/logo?v=${version}`
-      : null;
-    const faviconUrl = settings.faviconUrl
-      ? `${baseUrl}/api/web/web-settings/favicon?v=${version}`
-      : null;
+
+    const withVersion = (url) => {
+      if (!url) return null;
+      const separator = url.includes("?") ? "&" : "?";
+      return `${url}${separator}v=${version}`;
+    };
+
+    const logoUrl = withVersion(settings.logoUrl);
+    const faviconUrl = withVersion(settings.faviconUrl);
 
     const response = {
       id: settings.id,
-      logoUrl, // Proxy URL with version parameter
-      faviconUrl, // Proxy URL with version parameter
-      logoKey: settings.logoUrl, // Original S3 key
-      faviconKey: settings.faviconUrl, // Original S3 key
+      logoUrl, // Direct Cloudinary URL with cache-busting version
+      faviconUrl, // Direct Cloudinary URL with cache-busting version
+      logoKey: settings.logoUrl, // Stored Cloudinary URL
+      faviconKey: settings.faviconUrl, // Stored Cloudinary URL
       updatedAt: settings.updatedAt,
       createdAt: settings.createdAt,
     };
@@ -232,7 +230,10 @@ const deleteFavicon = async (req, res) => {
 };
 
 /**
- * Proxy logo image from S3 (avoids CORS issues)
+ * Legacy logo proxy endpoint.
+ * Cloudinary URLs are public, so we no longer stream the image through the
+ * backend (the old S3 streaming is removed). This redirects any cached proxy
+ * URLs to the actual Cloudinary asset so old links keep working.
  */
 const proxyLogo = async (req, res) => {
   try {
@@ -245,18 +246,8 @@ const proxyLogo = async (req, res) => {
       });
     }
 
-    // Get the S3 object
-    const s3Object = await getS3Object(settings.logoUrl);
-
-    // Set appropriate headers - NO CACHE to ensure fresh logo
-    res.setHeader("Content-Type", s3Object.ContentType || "image/png");
-    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    res.setHeader("Pragma", "no-cache");
-    res.setHeader("Expires", "0");
-    res.setHeader("Access-Control-Allow-Origin", "*"); // Allow CORS
-
-    // Stream the image
-    s3Object.Body.pipe(res);
+    // Redirect to the public Cloudinary URL directly
+    return res.redirect(302, settings.logoUrl);
   } catch (error) {
     console.error("Error proxying logo:", error);
     res.status(500).json({
@@ -267,7 +258,8 @@ const proxyLogo = async (req, res) => {
 };
 
 /**
- * Proxy favicon image from S3 (avoids CORS issues)
+ * Legacy favicon proxy endpoint.
+ * Redirects any cached proxy URLs to the actual Cloudinary asset.
  */
 const proxyFavicon = async (req, res) => {
   try {
@@ -280,18 +272,8 @@ const proxyFavicon = async (req, res) => {
       });
     }
 
-    // Get the S3 object
-    const s3Object = await getS3Object(settings.faviconUrl);
-
-    // Set appropriate headers - NO CACHE to ensure fresh favicon
-    res.setHeader("Content-Type", s3Object.ContentType || "image/x-icon");
-    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    res.setHeader("Pragma", "no-cache");
-    res.setHeader("Expires", "0");
-    res.setHeader("Access-Control-Allow-Origin", "*"); // Allow CORS
-
-    // Stream the image
-    s3Object.Body.pipe(res);
+    // Redirect to the public Cloudinary URL directly
+    return res.redirect(302, settings.faviconUrl);
   } catch (error) {
     console.error("Error proxying favicon:", error);
     res.status(500).json({
