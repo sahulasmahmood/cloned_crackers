@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { TableSkeleton } from "../product-skeletons";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -35,7 +36,9 @@ export const CategorySubcategory = () => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = React.useState("");
   const [statusFilter, setStatusFilter] = React.useState("all");
-  const [isLoading, setIsLoading] = React.useState(false);
+  // Start in the loading state so the skeleton shows on first paint instead of
+  // briefly flashing the "No categories found" empty state before the fetch runs.
+  const [isLoading, setIsLoading] = React.useState(true);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [itemsPerPage, setItemsPerPage] = React.useState(10);
   const [categoryData, setCategoryData] = React.useState<CategoryData[]>([]);
@@ -156,9 +159,7 @@ export const CategorySubcategory = () => {
           </TableHeader>
           <TableBody>
             {isLoading ? (
-              <TableRow>
-                <TableCell colSpan={7} className="text-center py-8">Loading...</TableCell>
-              </TableRow>
+              <TableSkeleton rows={6} columns={7} imageColumns={[1]} />
             ) : categoryData.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={7} className="text-center py-8">No categories found.</TableCell>

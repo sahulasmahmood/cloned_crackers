@@ -9,6 +9,8 @@ import { CouponForm } from "./coupon-form";
 import { toast } from "sonner";
 import { format } from "date-fns";
 import { useCurrency } from "@/hooks/useCurrency";
+import { ConfirmDialog } from "@/components/ui/confirm-dialog";
+import { TicketPercent, Plus, SearchX } from "lucide-react";
 
 interface Coupon {
   id: string;
@@ -43,6 +45,8 @@ export function CouponList() {
   const [editingCoupon, setEditingCoupon] = useState<Coupon | null>(null);
   const [filterActive, setFilterActive] = useState<string>("all");
   const [categories, setCategories] = useState<Category[]>([]);
+  const [couponToDelete, setCouponToDelete] = useState<Coupon | null>(null);
+  const [deletingCoupon, setDeletingCoupon] = useState(false);
 
   const currencySymbol = useCurrency();
 
@@ -99,16 +103,19 @@ export function CouponList() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterActive, searchTerm]);
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this coupon?")) return;
-
+  const confirmDeleteCoupon = async () => {
+    if (!couponToDelete) return;
+    setDeletingCoupon(true);
     try {
-      await axiosInstance.delete(`/api/online/coupons/${id}`);
+      await axiosInstance.delete(`/api/online/coupons/${couponToDelete.id}`);
       toast.success("Coupon deleted successfully");
+      setCouponToDelete(null);
       fetchCoupons();
     } catch (error) {
       console.error("Error deleting coupon:", error);
       toast.error("Failed to delete coupon");
+    } finally {
+      setDeletingCoupon(false);
     }
   };
 
@@ -130,6 +137,9 @@ export function CouponList() {
   const isUpcoming = (validFrom: string) => {
     return new Date(validFrom) > new Date();
   };
+
+  // Whether the empty result is due to an active search/filter (vs. truly no coupons)
+  const isFiltered = searchTerm.trim() !== "" || filterActive !== "all";
 
   return (
     <div className="p-6">
@@ -170,8 +180,40 @@ export function CouponList() {
       {loading ? (
         <div className="text-center py-8">Loading...</div>
       ) : coupons.length === 0 ? (
-        <div className="text-center py-8 text-gray-500">
-          No coupons found. Create your first coupon!
+        <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-gray-300 dark:border-gray-700 py-16 px-6 text-center">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 mb-4">
+            {isFiltered ? (
+              <SearchX className="h-7 w-7 text-gray-400" />
+            ) : (
+              <TicketPercent className="h-7 w-7 text-gray-400" />
+            )}
+          </div>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            {isFiltered ? "No coupons match your filters" : "No coupons yet"}
+          </h3>
+          <p className="mt-1 max-w-sm text-sm text-muted-foreground">
+            {isFiltered
+              ? "Try adjusting your search or filter to find what you're looking for."
+              : "Create your first coupon to offer discounts and promotions to your customers."}
+          </p>
+          <div className="mt-6">
+            {isFiltered ? (
+              <Button
+                variant="outline"
+                onClick={() => {
+                  setSearchTerm("");
+                  setFilterActive("all");
+                }}
+              >
+                Clear filters
+              </Button>
+            ) : (
+              <Button onClick={() => setShowForm(true)}>
+                <Plus className="h-4 w-4 mr-2" />
+                Create Coupon
+              </Button>
+            )}
+          </div>
         </div>
       ) : (
         <div className="grid gap-4">
@@ -264,7 +306,7 @@ export function CouponList() {
                   <Button
                     variant="destructive"
                     size="sm"
-                    onClick={() => handleDelete(coupon.id)}
+                    onClick={() => setCouponToDelete(coupon)}
                   >
                     Delete
                   </Button>
@@ -278,6 +320,25 @@ export function CouponList() {
       {showForm && (
         <CouponForm coupon={editingCoupon} onClose={handleFormClose} />
       )}
+
+      <ConfirmDialog
+        open={!!couponToDelete}
+        onOpenChange={(open) => !open && setCouponToDelete(null)}
+        title="Delete this coupon?"
+        description={
+          couponToDelete ? (
+            <>
+              This will permanently delete coupon{" "}
+              <span className="font-medium text-foreground">{couponToDelete.code}</span>. This action cannot be undone.
+            </>
+          ) : null
+        }
+        variant="destructive"
+        confirmLabel="Delete"
+        loadingLabel="Deleting..."
+        loading={deletingCoupon}
+        onConfirm={confirmDeleteCoupon}
+      />
     </div>
   );
 }

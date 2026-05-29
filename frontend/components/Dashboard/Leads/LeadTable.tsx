@@ -9,6 +9,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+import { TableSkeleton } from "@/components/ui/table-skeleton";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -245,9 +246,7 @@ export function LeadTable() {
                     </TableHeader>
                     <TableBody>
                         {loading ? (
-                            <TableRow>
-                                <TableCell colSpan={7} className="h-24 text-center">Loading leads...</TableCell>
-                            </TableRow>
+                            <TableSkeleton rows={6} columns={7} />
                         ) : leads.length === 0 ? (
                             <TableRow>
                                 <TableCell colSpan={7} className="h-24 text-center">No leads found.</TableCell>

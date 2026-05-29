@@ -51,6 +51,7 @@ import {
 } from "@/components/ui/pagination";
 
 import { ecommerceProductService } from "@/services/online-services/ecommerceProductService";
+import { TableSkeleton, MobileCardSkeleton } from "../product-skeletons";
 import { ProductData } from "@/types/product";
 import { toast } from "sonner";
 import { useCurrency } from "@/hooks/useCurrency";
@@ -65,7 +66,9 @@ export default function Online() {
   const [statusFilter, setStatusFilter] = React.useState("all");
   const [stockFilter, setStockFilter] = React.useState("all");
   const [showAdvancedFilters, setShowAdvancedFilters] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
+  // Start in the loading state so the skeleton shows on first paint instead of
+  // briefly flashing the empty state before the initial fetch runs.
+  const [isLoading, setIsLoading] = React.useState(true);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [itemsPerPage, setItemsPerPage] = React.useState(10);
 
@@ -542,16 +545,7 @@ export default function Online() {
           </TableHeader>
           <TableBody>
             {isLoading ? (
-              <TableRow>
-                <TableCell colSpan={10} className="text-center py-8">
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
-                    <p className="text-sm text-muted-foreground">
-                      Loading products...
-                    </p>
-                  </div>
-                </TableCell>
-              </TableRow>
+              <TableSkeleton rows={itemsPerPage} columns={10} imageColumns={[0]} />
             ) : products.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={10} className="text-center py-8">
@@ -771,14 +765,7 @@ export default function Online() {
       {/* Mobile Card View - Hidden on Desktop */}
       <div className="lg:hidden space-y-3">
         {isLoading ? (
-          <div className="flex items-center justify-center py-12">
-            <div className="flex flex-col items-center gap-3">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-              <p className="text-sm text-muted-foreground">
-                Loading products...
-              </p>
-            </div>
-          </div>
+          <MobileCardSkeleton count={5} />
         ) : products.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-12 border rounded-lg">
             <ImageIcon className="size-16 text-muted-foreground/50 mb-3" />

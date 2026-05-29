@@ -18,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown, Eye, Trash2 } from "lucide-react";
+import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { toast } from "sonner";
 import {
   Pagination,
@@ -55,6 +56,7 @@ export function OnlineOrdersTable({
   onDeleteOrder 
 }: OnlineOrdersTableProps) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [orderToDelete, setOrderToDelete] = useState<{ id: string; orderNumber: string } | null>(null);
   const itemsPerPage = 10;
 
   const totalPages = Math.ceil(orders.length / itemsPerPage);
@@ -72,11 +74,11 @@ export function OnlineOrdersTable({
     toast.success(`Order ${orderNumber} payment marked as ${newStatus}`);
   };
 
-  const handleDelete = (orderId: string, orderNumber: string) => {
-    if (confirm(`Are you sure you want to delete order ${orderNumber}?`)) {
-      onDeleteOrder(orderId);
-      toast.error(`Order ${orderNumber} deleted`);
-    }
+  const confirmDeleteOrder = () => {
+    if (!orderToDelete) return;
+    onDeleteOrder(orderToDelete.id);
+    toast.error(`Order ${orderToDelete.orderNumber} deleted`);
+    setOrderToDelete(null);
   };
 
   const handleViewDetails = (orderNumber: string) => {
@@ -244,7 +246,7 @@ export function OnlineOrdersTable({
                     <Button
                       size="icon"
                       variant="ghost"
-                      onClick={() => handleDelete(order.id, order.orderNumber)}
+                      onClick={() => setOrderToDelete({ id: order.id, orderNumber: order.orderNumber })}
                       className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50"
                     >
                       <Trash2 className="h-4 w-4" />
@@ -380,6 +382,23 @@ export function OnlineOrdersTable({
           </Pagination>
         </div>
       )}
+
+      <ConfirmDialog
+        open={!!orderToDelete}
+        onOpenChange={(open) => !open && setOrderToDelete(null)}
+        title="Delete this order?"
+        description={
+          orderToDelete ? (
+            <>
+              This will permanently delete order{" "}
+              <span className="font-medium text-foreground">{orderToDelete.orderNumber}</span>. This action cannot be undone.
+            </>
+          ) : null
+        }
+        variant="destructive"
+        confirmLabel="Delete"
+        onConfirm={confirmDeleteOrder}
+      />
     </div>
   );
 }
